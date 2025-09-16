@@ -22,13 +22,11 @@
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
             background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
@@ -36,7 +34,6 @@
             min-height: 100vh;
             overflow-x: hidden;
         }
-
         /* Header */
         .header {
             position: fixed;
@@ -48,7 +45,6 @@
             z-index: 1000;
             padding: 1rem 0;
         }
-
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -57,13 +53,11 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
         .logo-icon {
             width: 50px;
             height: 50px;
@@ -75,7 +69,6 @@
             font-size: 1.5rem;
             color: white;
         }
-
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
@@ -83,19 +76,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .header-actions {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
-
         .user-info {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -106,7 +96,6 @@
             justify-content: center;
             color: white;
         }
-
         /* Sidebar */
         .sidebar {
             position: fixed;
@@ -119,12 +108,11 @@
             border-right: 1px solid var(--glass-border);
             overflow-y: auto;
             z-index: 999;
+            transition: transform 0.3s ease;
         }
-
         .sidebar-menu {
             padding: 1.5rem 0;
         }
-
         .sidebar-item {
             display: flex;
             align-items: center;
@@ -134,34 +122,31 @@
             text-decoration: none;
             transition: all 0.3s ease;
             border-left: 3px solid transparent;
+            cursor: pointer;
         }
-
         .sidebar-item:hover {
             background: rgba(79, 70, 229, 0.1);
             color: white;
             border-left-color: var(--primary);
         }
-
         .sidebar-item.active {
             background: rgba(79, 70, 229, 0.2);
             color: white;
             border-left-color: var(--primary);
         }
-
         .sidebar-icon {
             font-size: 1.25rem;
             width: 20px;
             text-align: center;
         }
-
         /* Main Content */
         .main-content {
             margin-left: 250px;
             margin-top: 80px;
             padding: 2rem;
             min-height: calc(100vh - 80px);
+            transition: margin-left 0.3s ease;
         }
-
         /* Dashboard Stats */
         .stats-grid {
             display: grid;
@@ -169,7 +154,6 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
         .stat-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -178,20 +162,17 @@
             padding: 1.5rem;
             transition: all 0.3s ease;
         }
-
         .stat-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary);
         }
-
         .stat-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1rem;
         }
-
         .stat-icon {
             width: 50px;
             height: 50px;
@@ -201,51 +182,41 @@
             justify-content: center;
             font-size: 1.5rem;
         }
-
         .stat-icon.blue {
             background: rgba(59, 130, 246, 0.2);
             color: #3B82F6;
         }
-
         .stat-icon.green {
             background: rgba(16, 185, 129, 0.2);
             color: #10B981;
         }
-
         .stat-icon.red {
             background: rgba(239, 68, 68, 0.2);
             color: #EF4444;
         }
-
         .stat-icon.yellow {
             background: rgba(245, 158, 11, 0.2);
             color: #F59E0B;
         }
-
         .stat-value {
             font-size: 2rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
-
         .stat-label {
             color: #94A3B8;
             font-size: 0.875rem;
         }
-
         .stat-change {
             font-size: 0.875rem;
             font-weight: 500;
         }
-
         .stat-change.positive {
             color: #10B981;
         }
-
         .stat-change.negative {
             color: #EF4444;
         }
-
         /* Dashboard Cards */
         .dashboard-grid {
             display: grid;
@@ -253,7 +224,6 @@
             gap: 1.5rem;
             margin-bottom: 2rem;
         }
-
         .card {
             background: var(--glass);
             backdrop-filter: blur(20px);
@@ -261,7 +231,6 @@
             border-radius: 20px;
             overflow: hidden;
         }
-
         .card-header {
             padding: 1.5rem;
             border-bottom: 1px solid var(--glass-border);
@@ -269,17 +238,14 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .card-title {
             font-size: 1.25rem;
             font-weight: 600;
         }
-
         .card-actions {
             display: flex;
             gap: 0.5rem;
         }
-
         .card-action {
             width: 36px;
             height: 36px;
@@ -293,34 +259,28 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .card-action:hover {
             background: rgba(79, 70, 229, 0.2);
             color: white;
         }
-
         .card-content {
             padding: 1.5rem;
         }
-
         /* Map Container */
         .map-container {
             height: 400px;
             border-radius: 12px;
             overflow: hidden;
         }
-
         #map {
             height: 100%;
             width: 100%;
         }
-
         /* Alerts List */
         .alerts-list {
             max-height: 400px;
             overflow-y: auto;
         }
-
         .alert-item {
             padding: 1rem;
             margin-bottom: 1rem;
@@ -329,29 +289,24 @@
             border-left: 4px solid var(--primary);
             transition: all 0.3s ease;
         }
-
         .alert-item:hover {
             transform: translateX(5px);
             background: rgba(255, 255, 255, 0.1);
         }
-
         .alert-item.emergency {
             border-left-color: var(--danger);
             background: rgba(239, 68, 68, 0.1);
         }
-
         .alert-item.warning {
             border-left-color: var(--warning);
             background: rgba(245, 158, 11, 0.1);
         }
-
         .alert-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.5rem;
         }
-
         .alert-type {
             font-weight: 600;
             font-size: 0.75rem;
@@ -361,32 +316,26 @@
             background: rgba(79, 70, 229, 0.2);
             color: var(--primary);
         }
-
         .alert-item.emergency .alert-type {
             background: rgba(239, 68, 68, 0.2);
             color: var(--danger);
         }
-
         .alert-item.warning .alert-type {
             background: rgba(245, 158, 11, 0.2);
             color: var(--warning);
         }
-
         .alert-time {
             font-size: 0.75rem;
             color: #64748B;
         }
-
         .alert-message {
             color: #CBD5E1;
             margin-bottom: 0.75rem;
         }
-
         .alert-actions {
             display: flex;
             gap: 0.5rem;
         }
-
         .btn {
             padding: 0.5rem 1rem;
             border: none;
@@ -396,54 +345,44 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .btn-primary {
             background: var(--primary);
             color: white;
         }
-
         .btn-secondary {
             background: rgba(255, 255, 255, 0.1);
             color: #CBD5E1;
             border: 1px solid var(--glass-border);
         }
-
         .btn:hover {
             transform: translateY(-1px);
         }
-
         /* Chart Container */
         .chart-container {
             height: 300px;
             position: relative;
         }
-
         /* Incidents Table */
         .table-container {
             overflow-x: auto;
         }
-
         table {
             width: 100%;
             border-collapse: collapse;
         }
-
         th, td {
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid var(--glass-border);
         }
-
         th {
             background: rgba(79, 70, 229, 0.1);
             font-weight: 600;
             color: white;
         }
-
         td {
             color: #CBD5E1;
         }
-
         .status-badge {
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
@@ -451,22 +390,18 @@
             font-weight: 600;
             text-transform: uppercase;
         }
-
         .status-badge.active {
             background: rgba(239, 68, 68, 0.2);
             color: var(--danger);
         }
-
         .status-badge.resolved {
             background: rgba(16, 185, 129, 0.2);
             color: var(--secondary);
         }
-
         .status-badge.pending {
             background: rgba(245, 158, 11, 0.2);
             color: var(--warning);
         }
-
         /* Tabs */
         .tabs {
             display: flex;
@@ -476,7 +411,6 @@
             padding: 0.5rem;
             border-radius: 12px;
         }
-
         .tab {
             flex: 1;
             padding: 0.75rem 1rem;
@@ -488,50 +422,264 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .tab.active {
             background: var(--primary);
             color: white;
         }
-
         .tab:hover:not(.active) {
             background: rgba(255, 255, 255, 0.1);
             color: white;
         }
-
         .tab-content {
             display: none;
         }
-
         .tab-content.active {
             display: block;
         }
-
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+        .page-content.active {
+            display: block;
+        }
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #CBD5E1;
+        }
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        /* Tourist Card */
+        .tourist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .tourist-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .tourist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .tourist-header {
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .tourist-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+        }
+        .tourist-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        .tourist-info p {
+            color: #94A3B8;
+            font-size: 0.875rem;
+        }
+        .tourist-body {
+            padding: 0 1.5rem 1.5rem;
+        }
+        .tourist-detail {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .tourist-detail:last-child {
+            border-bottom: none;
+        }
+        .tourist-detail-label {
+            color: #94A3B8;
+        }
+        .tourist-detail-value {
+            font-weight: 500;
+        }
+        /* FIR Form */
+        .fir-form {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        /* Settings */
+        .settings-section {
+            margin-bottom: 2rem;
+        }
+        .settings-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
+        }
+        .settings-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 0.75rem;
+        }
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .toggle-switch.active {
+            background: var(--primary);
+        }
+        .toggle-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        .toggle-switch.active::after {
+            left: 28px;
+        }
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
         /* Responsive Design */
         @media (max-width: 1024px) {
             .sidebar {
                 transform: translateX(-100%);
             }
             
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
             .main-content {
                 margin-left: 0;
+            }
+            
+            .mobile-menu-toggle {
+                display: block;
             }
             
             .dashboard-grid {
                 grid-template-columns: 1fr;
             }
         }
-
         @media (max-width: 768px) {
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
         }
-
         @media (max-width: 480px) {
             .stats-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .tourist-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            min-width: 300px;
+            z-index: 1001;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        .notification.show {
+            transform: translateX(0);
+        }
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        .notification-title {
+            font-weight: 600;
+        }
+        .notification-close {
+            background: none;
+            border: none;
+            color: #94A3B8;
+            cursor: pointer;
+        }
+        .notification-message {
+            color: #CBD5E1;
+            font-size: 0.875rem;
+        }
+        /* Loading Spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -539,11 +687,16 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-shield-alt"></i>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="logo-text">Tourist Safety System</div>
                 </div>
-                <div class="logo-text">Tourist Safety System</div>
             </div>
             <div class="header-actions">
                 <div class="user-info">
@@ -555,367 +708,1209 @@
                         <div style="font-size: 0.875rem; color: #94A3B8;">Police Department</div>
                     </div>
                 </div>
-                <button class="btn btn-secondary">
+                <button class="btn btn-secondary" id="logoutBtn">
                     <i class="fas fa-sign-out-alt"></i>
                 </button>
             </div>
         </div>
     </header>
-
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar" id="sidebar">
         <nav class="sidebar-menu">
-            <a href="#" class="sidebar-item active">
+            <a href="#" class="sidebar-item active" data-page="dashboard">
                 <i class="fas fa-tachometer-alt sidebar-icon"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="tracking">
                 <i class="fas fa-map-marked-alt sidebar-icon"></i>
                 <span>Live Tracking</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="alerts">
                 <i class="fas fa-exclamation-triangle sidebar-icon"></i>
                 <span>Alerts</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="efir">
                 <i class="fas fa-file-alt sidebar-icon"></i>
                 <span>E-FIR System</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="tourists">
                 <i class="fas fa-users sidebar-icon"></i>
                 <span>Tourist Database</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="analytics">
                 <i class="fas fa-chart-bar sidebar-icon"></i>
                 <span>Analytics</span>
             </a>
-            <a href="#" class="sidebar-item">
+            <a href="#" class="sidebar-item" data-page="settings">
                 <i class="fas fa-cog sidebar-icon"></i>
                 <span>Settings</span>
             </a>
         </nav>
     </aside>
-
     <!-- Main Content -->
     <main class="main-content">
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon blue">
-                        <i class="fas fa-users"></i>
+        <!-- Dashboard Page -->
+        <div id="dashboard" class="page-content active">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </div>
                     </div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-up"></i> 12%
-                    </div>
+                    <div class="stat-value" id="touristCount">2,847</div>
+                    <div class="stat-label">Active Tourists</div>
                 </div>
-                <div class="stat-value">2,847</div>
-                <div class="stat-label">Active Tourists</div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon green">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 5%
+                        </div>
+                    </div>
+                    <div class="stat-value" id="safetyScore">98%</div>
+                    <div class="stat-label">Safety Score</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon red">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-change negative">
+                            <i class="fas fa-arrow-up"></i> 8%
+                        </div>
+                    </div>
+                    <div class="stat-value" id="alertCount">24</div>
+                    <div class="stat-label">Active Alerts</div>
+                    </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon yellow">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-change positive">
+                            <i class="fas fa-arrow-down"></i> 15%
+                        </div>
+                    </div>
+                    <div class="stat-value" id="responseTime">3.2 min</div>
+                    <div class="stat-label">Avg Response Time</div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon green">
-                        <i class="fas fa-shield-alt"></i>
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- Map Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Real-time Tourist Map</h3>
+                        <div class="card-actions">
+                            <div class="card-action" id="expandMapBtn">
+                                <i class="fas fa-expand"></i>
+                            </div>
+                            <div class="card-action" id="filterMapBtn">
+                                <i class="fas fa-filter"></i>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-up"></i> 5%
+                    <div class="card-content">
+                        <div class="map-container">
+                            <div id="map"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-value">98%</div>
-                <div class="stat-label">Safety Score</div>
+                <!-- Alerts Card -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Recent Alerts</h3>
+                        <div class="card-actions">
+                            <div class="card-action" id="refreshAlertsBtn">
+                                <i class="fas fa-refresh"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="alerts-list" id="alertsList">
+                            <!-- Alerts will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon red">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="stat-change negative">
-                        <i class="fas fa-arrow-up"></i> 8%
+            <!-- Analytics Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Analytics & Reports</h3>
+                    <div class="card-actions">
+                        <div class="card-action" id="downloadReportBtn">
+                            <i class="fas fa-download"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-value">24</div>
-                <div class="stat-label">Active Alerts</div>
+                <div class="card-content">
+                    <div class="tabs">
+                        <button class="tab active" data-tab="incidents">Incident Trends</button>
+                        <button class="tab" data-tab="heatmap">Heat Map</button>
+                        <button class="tab" data-tab="response">Response Time</button>
+                    </div>
+                    
+                    <div id="incidents" class="tab-content active">
+                        <div class="chart-container">
+                            <canvas id="incidentChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div id="heatmap" class="tab-content">
+                        <div class="chart-container">
+                            <canvas id="heatmapChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div id="response" class="tab-content">
+                        <div class="chart-container">
+                            <canvas id="responseChart"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-                <div class="stat-header">
-                    <div class="stat-icon yellow">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="stat-change positive">
-                        <i class="fas fa-arrow-down"></i> 15%
+            <!-- Incidents Table -->
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Incidents</h3>
+                    <div class="card-actions">
+                        <div class="card-action" id="addIncidentBtn">
+                            <i class="fas fa-plus"></i>
+                        </div>
                     </div>
                 </div>
-                <div class="stat-value">3.2 min</div>
-                <div class="stat-label">Avg Response Time</div>
+                <div class="card-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="incidentsTableBody">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Dashboard Grid -->
-        <div class="dashboard-grid">
-            <!-- Map Card -->
+        <!-- Live Tracking Page -->
+        <div id="tracking" class="page-content">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Real-time Tourist Map</h3>
+                    <h3 class="card-title">Live Tourist Tracking</h3>
                     <div class="card-actions">
-                        <div class="card-action">
-                            <i class="fas fa-expand"></i>
+                        <div class="card-action" id="refreshTrackingBtn">
+                            <i class="fas fa-sync"></i>
                         </div>
-                        <div class="card-action">
+                        <div class="card-action" id="trackingFilterBtn">
                             <i class="fas fa-filter"></i>
                         </div>
                     </div>
                 </div>
                 <div class="card-content">
-                    <div class="map-container">
-                        <div id="map"></div>
+                    <div class="map-container" style="height: 500px;">
+                        <div id="trackingMap"></div>
                     </div>
                 </div>
             </div>
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Tracked Tourists</h3>
+                </div>
+                <div class="card-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Nationality</th>
+                                    <th>Location</th>
+                                    <th>Last Updated</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="trackedTouristsTableBody">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <!-- Alerts Card -->
+        <!-- Alerts Page -->
+        <div id="alerts" class="page-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon red">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="emergencyAlertsCount">5</div>
+                    <div class="stat-label">Emergency Alerts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon yellow">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="warningAlertsCount">12</div>
+                    <div class="stat-label">Warning Alerts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="infoAlertsCount">7</div>
+                    <div class="stat-label">Information Alerts</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="resolvedAlertsCount">42</div>
+                    <div class="stat-label">Resolved Today</div>
+                </div>
+            </div>
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Recent Alerts</h3>
+                    <h3 class="card-title">All Alerts</h3>
                     <div class="card-actions">
-                        <div class="card-action">
+                        <div class="card-action" id="addAlertBtn">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="card-action" id="refreshAllAlertsBtn">
                             <i class="fas fa-refresh"></i>
                         </div>
                     </div>
                 </div>
                 <div class="card-content">
-                    <div class="alerts-list">
-                        <div class="alert-item emergency">
-                            <div class="alert-header">
-                                <span class="alert-type">Emergency</span>
-                                <span class="alert-time">2 min ago</span>
-                            </div>
-                            <p class="alert-message">Medical emergency reported near Taj Mahal</p>
-                            <div class="alert-actions">
-                                <button class="btn btn-primary">Respond</button>
-                                <button class="btn btn-secondary">Details</button>
-                            </div>
+                    <div class="tabs">
+                        <button class="tab active" data-alert-tab="all">All Alerts</button>
+                        <button class="tab" data-alert-tab="emergency">Emergency</button>
+                        <button class="tab" data-alert-tab="warning">Warning</button>
+                        <button class="tab" data-alert-tab="info">Information</button>
+                    </div>
+                    <div id="allAlerts" class="tab-content active">
+                        <div class="alerts-list" id="allAlertsList">
+                            <!-- Alerts will be populated by JavaScript -->
                         </div>
-                        <div class="alert-item warning">
-                            <div class="alert-header">
-                                <span class="alert-type">Warning</span>
-                                <span class="alert-time">15 min ago</span>
-                            </div>
-                            <p class="alert-message">Heavy traffic on Delhi-Jaipur highway</p>
-                            <div class="alert-actions">
-                                <button class="btn btn-primary">Monitor</button>
-                                <button class="btn btn-secondary">Alert</button>
-                            </div>
+                    </div>
+                    <div id="emergency" class="tab-content">
+                        <div class="alerts-list" id="emergencyAlertsList">
+                            <!-- Emergency alerts will be populated by JavaScript -->
                         </div>
-                        <div class="alert-item">
-                            <div class="alert-header">
-                                <span class="alert-type">Info</span>
-                                <span class="alert-time">1 hour ago</span>
-                            </div>
-                            <p class="alert-message">Weather update: Clear skies expected</p>
-                            <div class="alert-actions">
-                                <button class="btn btn-primary">Acknowledge</button>
-                            </div>
+                    </div>
+                    <div id="warning" class="tab-content">
+                        <div class="alerts-list" id="warningAlertsList">
+                            <!-- Warning alerts will be populated by JavaScript -->
+                        </div>
+                    </div>
+                    <div id="info" class="tab-content">
+                        <div class="alerts-list" id="infoAlertsList">
+                            <!-- Info alerts will be populated by JavaScript -->
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Analytics Section -->
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Analytics & Reports</h3>
-                <div class="card-actions">
-                    <div class="card-action">
-                        <i class="fas fa-download"></i>
+        <!-- E-FIR System Page -->
+        <div id="efir" class="page-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
                     </div>
+                    <div class="stat-value" id="totalFirCount">156</div>
+                    <div class="stat-label">Total FIRs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon red">
+                            <i class="fas fa-hourglass-half"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="pendingFirCount">24</div>
+                    <div class="stat-label">Pending FIRs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon yellow">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="inProgressFirCount">18</div>
+                    <div class="stat-label">In Progress</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon green">
+                            <i class="fas fa-check"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="resolvedFirCount">114</div>
+                    <div class="stat-label">Resolved</div>
                 </div>
             </div>
-            <div class="card-content">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('incidents')">Incident Trends</button>
-                    <button class="tab" onclick="switchTab('heatmap')">Heat Map</button>
-                    <button class="tab" onclick="switchTab('response')">Response Time</button>
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Register New FIR</h3>
                 </div>
-                
-                <div id="incidents" class="tab-content active">
-                    <div class="chart-container">
-                        <canvas id="incidentChart"></canvas>
+                <div class="card-content">
+                    <form class="fir-form" id="firForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firComplainant">Complainant Name</label>
+                                <input type="text" class="form-control" id="firComplainant" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="firContact">Contact Number</label>
+                                <input type="tel" class="form-control" id="firContact" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firType">Incident Type</label>
+                                <select class="form-control" id="firType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="theft">Theft</option>
+                                    <option value="lost">Lost Item</option>
+                                    <option value="medical">Medical Emergency</option>
+                                    <option value="accident">Accident</option>
+                                    <option value="harassment">Harassment</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="firDate">Date of Incident</label>
+                                <input type="date" class="form-control" id="firDate" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label" for="firLocation">Location</label>
+                                <input type="text" class="form-control" id="firLocation" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="firCity">City</label>
+                                <input type="text" class="form-control" id="firCity" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="firDescription">Description</label>
+                            <textarea class="form-control" id="firDescription" rows="4" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="firEvidence">Evidence (URL)</label>
+                            <input type="text" class="form-control" id="firEvidence" placeholder="Link to photos or videos">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit FIR</button>
+                            <button type="reset" class="btn btn-secondary">Reset Form</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Recent FIRs</h3>
+                    <div class="card-actions">
+                        <div class="card-action" id="refreshFirBtn">
+                            <i class="fas fa-refresh"></i>
+                        </div>
                     </div>
                 </div>
-                
-                <div id="heatmap" class="tab-content">
-                    <div class="chart-container">
-                        <canvas id="heatmapChart"></canvas>
-                    </div>
-                </div>
-                
-                <div id="response" class="tab-content">
-                    <div class="chart-container">
-                        <canvas id="responseChart"></canvas>
+                <div class="card-content">
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>FIR ID</th>
+                                    <th>Complainant</th>
+                                    <th>Type</th>
+                                    <th>Location</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="firTableBody">
+                                <!-- Table rows will be populated by JavaScript -->
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Incidents Table -->
-        <div class="card" style="margin-top: 1.5rem;">
-            <div class="card-header">
-                <h3 class="card-title">Recent Incidents</h3>
-                <div class="card-actions">
-                    <div class="card-action">
-                        <i class="fas fa-plus"></i>
+        <!-- Tourist Database Page -->
+        <div id="tourists" class="page-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Tourist Database</h3>
+                    <div class="card-actions">
+                        <div class="card-action" id="addTouristBtn">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="card-action" id="searchTouristBtn">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="form-group">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="touristSearch" placeholder="Search by name, nationality, or ID...">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" id="touristFilter">
+                                    <option value="all">All Tourists</option>
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="emergency">In Emergency</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tourist-grid" id="touristGrid">
+                        <!-- Tourist cards will be populated by JavaScript -->
                     </div>
                 </div>
             </div>
-            <div class="card-content">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Type</th>
-                                <th>Location</th>
-                                <th>Status</th>
-                                <th>Time</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>#INC001</td>
-                                <td>Medical</td>
-                                <td>Taj Mahal, Agra</td>
-                                <td><span class="status-badge active">Active</span></td>
-                                <td>2 min ago</td>
-                                <td>
-                                    <button class="btn btn-primary">View</button>
-                                    <button class="btn btn-secondary">Update</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#INC002</td>
-                                <td>Theft</td>
-                                <td>Connaught Place, Delhi</td>
-                                <td><span class="status-badge resolved">Resolved</span></td>
-                                <td>1 hour ago</td>
-                                <td>
-                                    <button class="btn btn-primary">View</button>
-                                    <button class="btn btn-secondary">Report</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>#INC003</td>
-                                <td>Lost Item</td>
-                                <td>India Gate, Delhi</td>
-                                <td><span class="status-badge pending">Pending</span></td>
-                                <td>3 hours ago</td>
-                                <td>
-                                    <button class="btn btn-primary">View</button>
-                                    <button class="btn btn-secondary">Assign</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+        </div>
+
+        <!-- Analytics Page -->
+        <div id="analytics" class="page-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="incidentRate">+12%</div>
+                    <div class="stat-label">Incident Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon green">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="resolutionRate">87%</div>
+                    <div class="stat-label">Resolution Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon yellow">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="avgResolutionTime">4.2 days</div>
+                    <div class="stat-label">Avg. Resolution Time</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon red">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="hotspotCount">8</div>
+                    <div class="stat-label">Hotspot Areas</div>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Incident Trends</h3>
+                        <div class="card-actions">
+                            <div class="card-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="analyticsTrendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Incident Distribution</h3>
+                        <div class="card-actions">
+                            <div class="card-action">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div class="chart-container" style="height: 300px;">
+                            <canvas id="analyticsDistributionChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 1.5rem;">
+                <div class="card-header">
+                    <h3 class="card-title">Hotspot Analysis</h3>
+                    <div class="card-actions">
+                        <div class="card-action">
+                            <i class="fas fa-download"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="map-container" style="height: 400px;">
+                        <div id="hotspotMap"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Page -->
+        <div id="settings" class="page-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">System Settings</h3>
+                </div>
+                <div class="card-content">
+                    <div class="settings-section">
+                        <h3>Notification Settings</h3>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Email Notifications</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive notifications via email</div>
+                            </div>
+                            <div class="toggle-switch active" id="emailNotificationsToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">SMS Alerts</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive alerts via SMS</div>
+                            </div>
+                            <div class="toggle-switch active" id="smsAlertsToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Push Notifications</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive push notifications</div>
+                            </div>
+                            <div class="toggle-switch" id="pushNotificationsToggle"></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Alert Settings</h3>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Emergency Alerts</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive emergency alerts</div>
+                            </div>
+                            <div class="toggle-switch active" id="emergencyAlertsToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Warning Alerts</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive warning alerts</div>
+                            </div>
+                            <div class="toggle-switch active" id="warningAlertsToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Information Alerts</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Receive information alerts</div>
+                            </div>
+                            <div class="toggle-switch" id="informationAlertsToggle"></div>
+                        </div>
+                    </div>
+                    <div class="settings-section">
+                        <h3>Map Settings</h3>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Show Tourist Locations</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Display tourist locations on map</div>
+                            </div>
+                            <div class="toggle-switch active" id="showTouristLocationsToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Show Incident Markers</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Display incident markers on map</div>
+                            </div>
+                            <div class="toggle-switch active" id="showIncidentMarkersToggle"></div>
+                        </div>
+                        <div class="settings-item">
+                            <div>
+                                <div style="font-weight: 500;">Show Hotspot Areas</div>
+                                <div style="font-size: 0.875rem; color: #94A3B8;">Display hotspot areas on map</div>
+                            </div>
+                            <div class="toggle-switch active" id="showHotspotAreasToggle"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" id="saveSettingsBtn">Save Settings</button>
+                        <button class="btn btn-secondary" id="resetSettingsBtn">Reset to Default</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
 
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <div class="notification-header">
+            <div class="notification-title" id="notificationTitle">Notification</div>
+            <button class="notification-close" id="notificationClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-message" id="notificationMessage">
+            This is a notification message.
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Initialize Map
-        const map = L.map('map').setView([28.6139, 77.2090], 12);
-        
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        // Initialize data storage
+        let tourists = [];
+        let alerts = [];
+        let incidents = [];
+        let firs = [];
+        let settings = {
+            emailNotifications: true,
+            smsAlerts: true,
+            pushNotifications: false,
+            emergencyAlerts: true,
+            warningAlerts: true,
+            informationAlerts: false,
+            showTouristLocations: true,
+            showIncidentMarkers: true,
+            showHotspotAreas: true
+        };
 
-        // Add sample markers
-        const tourists = [
-            { name: "John Doe", lat: 28.6139, lng: 77.2090, status: "active" },
-            { name: "Jane Smith", lat: 28.7041, lng: 77.1025, status: "active" },
-            { name: "Robert Johnson", lat: 28.5355, lng: 77.3910, status: "active" },
-            { name: "Emily Davis", lat: 28.4595, lng: 77.0266, status: "active" }
-        ];
+        // Load data from localStorage
+        function loadData() {
+            const storedTourists = localStorage.getItem('tourists');
+            const storedAlerts = localStorage.getItem('alerts');
+            const storedIncidents = localStorage.getItem('incidents');
+            const storedFirs = localStorage.getItem('firs');
+            const storedSettings = localStorage.getItem('settings');
 
-        tourists.forEach(tourist => {
-            const marker = L.marker([tourist.lat, tourist.lng]).addTo(map);
-            marker.bindPopup(`<b>${tourist.name}</b><br>Status: ${tourist.status}`);
+            if (storedTourists) tourists = JSON.parse(storedTourists);
+            if (storedAlerts) alerts = JSON.parse(storedAlerts);
+            if (storedIncidents) incidents = JSON.parse(storedIncidents);
+            if (storedFirs) firs = JSON.parse(storedFirs);
+            if (storedSettings) settings = JSON.parse(storedSettings);
+
+            // Initialize with sample data if empty
+            if (tourists.length === 0) initializeSampleData();
+        }
+
+        // Save data to localStorage
+        function saveData() {
+            localStorage.setItem('tourists', JSON.stringify(tourists));
+            localStorage.setItem('alerts', JSON.stringify(alerts));
+            localStorage.setItem('incidents', JSON.stringify(incidents));
+            localStorage.setItem('firs', JSON.stringify(firs));
+            localStorage.setItem('settings', JSON.stringify(settings));
+        }
+
+        // Initialize sample data
+        function initializeSampleData() {
+            // Sample tourists
+            tourists = [
+                {
+                    id: 'T001',
+                    name: 'John Doe',
+                    nationality: 'USA',
+                    contact: '+1-555-1234',
+                    location: 'Taj Mahal, Agra',
+                    lat: 27.1751,
+                    lng: 78.0421,
+                    status: 'active',
+                    lastUpdated: new Date().toISOString()
+                },
+                {
+                    id: 'T002',
+                    name: 'Jane Smith',
+                    nationality: 'UK',
+                    contact: '+44-20-7946-0958',
+                    location: 'India Gate, Delhi',
+                    lat: 28.6129,
+                    lng: 77.2295,
+                    status: 'active',
+                    lastUpdated: new Date().toISOString()
+                },
+                {
+                    id: 'T003',
+                    name: 'Robert Johnson',
+                    nationality: 'Australia',
+                    contact: '+61-2-9876-5432',
+                    location: 'Red Fort, Delhi',
+                    lat: 28.6562,
+                    lng: 77.2410,
+                    status: 'active',
+                    lastUpdated: new Date().toISOString()
+                },
+                {
+                    id: 'T004',
+                    name: 'Emily Davis',
+                    nationality: 'Canada',
+                    contact: '+1-416-555-0199',
+                    location: 'Qutub Minar, Delhi',
+                    lat: 28.5245,
+                    lng: 77.1855,
+                    status: 'active',
+                    lastUpdated: new Date().toISOString()
+                },
+                {
+                    id: 'T005',
+                    name: 'Michael Wilson',
+                    nationality: 'Germany',
+                    contact: '+49-30-1234567',
+                    location: 'Lotus Temple, Delhi',
+                    lat: 28.5535,
+                    lng: 77.2588,
+                    status: 'emergency',
+                    lastUpdated: new Date().toISOString()
+                }
+            ];
+
+            // Sample alerts
+            alerts = [
+                {
+                    id: 'A001',
+                    type: 'emergency',
+                    message: 'Medical emergency reported near Taj Mahal',
+                    location: 'Taj Mahal, Agra',
+                    time: new Date(Date.now() - 2 * 60000).toISOString(),
+                    status: 'active'
+                },
+                {
+                    id: 'A002',
+                    type: 'warning',
+                    message: 'Heavy traffic on Delhi-Jaipur highway',
+                    location: 'Delhi-Jaipur Highway',
+                    time: new Date(Date.now() - 15 * 60000).toISOString(),
+                    status: 'active'
+                },
+                {
+                    id: 'A003',
+                    type: 'info',
+                    message: 'Weather update: Clear skies expected',
+                    location: 'Delhi NCR',
+                    time: new Date(Date.now() - 60 * 60000).toISOString(),
+                    status: 'active'
+                },
+                {
+                    id: 'A004',
+                    type: 'emergency',
+                    message: 'Tourist reported missing near India Gate',
+                    location: 'India Gate, Delhi',
+                    time: new Date(Date.now() - 30 * 60000).toISOString(),
+                    status: 'active'
+                },
+                {
+                    id: 'A005',
+                    type: 'warning',
+                    message: 'Pickpocketing incident reported in Connaught Place',
+                    location: 'Connaught Place, Delhi',
+                    time: new Date(Date.now() - 45 * 60000).toISOString(),
+                    status: 'active'
+                }
+            ];
+
+            // Sample incidents
+            incidents = [
+                {
+                    id: 'INC001',
+                    type: 'Medical',
+                    location: 'Taj Mahal, Agra',
+                    status: 'active',
+                    time: new Date(Date.now() - 2 * 60000).toISOString(),
+                    description: 'Tourist fainted due to heat exhaustion'
+                },
+                {
+                    id: 'INC002',
+                    type: 'Theft',
+                    location: 'Connaught Place, Delhi',
+                    status: 'resolved',
+                    time: new Date(Date.now() - 60 * 60000).toISOString(),
+                    description: 'Wallet stolen from tourist'
+                },
+                {
+                    id: 'INC003',
+                    type: 'Lost Item',
+                    location: 'India Gate, Delhi',
+                    status: 'pending',
+                    time: new Date(Date.now() - 180 * 60000).toISOString(),
+                    description: 'Passport reported missing'
+                }
+            ];
+
+            // Sample FIRs
+            firs = [
+                {
+                    id: 'FIR001',
+                    complainant: 'John Doe',
+                    contact: '+1-555-1234',
+                    type: 'theft',
+                    location: 'Connaught Place, Delhi',
+                    city: 'Delhi',
+                    date: new Date(Date.now() - 2 * 24 * 60 * 60000).toISOString().split('T')[0],
+                    description: 'My wallet was stolen while I was shopping. It contained $200, my credit cards, and my driver\'s license.',
+                    evidence: 'https://example.com/evidence1.jpg',
+                    status: 'resolved',
+                    filedAt: new Date(Date.now() - 2 * 24 * 60 * 60000).toISOString()
+                },
+                {
+                    id: 'FIR002',
+                    complainant: 'Jane Smith',
+                    contact: '+44-20-7946-0958',
+                    type: 'lost',
+                    location: 'India Gate, Delhi',
+                    city: 'Delhi',
+                    date: new Date(Date.now() - 1 * 24 * 60 * 60000).toISOString().split('T')[0],
+                    description: 'I lost my passport near India Gate. I think it fell out of my bag while taking photos.',
+                    evidence: '',
+                    status: 'in-progress',
+                    filedAt: new Date(Date.now() - 1 * 24 * 60 * 60000).toISOString()
+                },
+                {
+                    id: 'FIR003',
+                    complainant: 'Robert Johnson',
+                    contact: '+61-2-9876-5432',
+                    type: 'medical',
+                    location: 'Taj Mahal, Agra',
+                    city: 'Agra',
+                    date: new Date().toISOString().split('T')[0],
+                    description: 'My wife had a medical emergency due to heat exhaustion. She received first aid and is now stable.',
+                    evidence: 'https://example.com/evidence3.jpg',
+                    status: 'pending',
+                    filedAt: new Date().toISOString()
+                }
+            ];
+
+            saveData();
+        }
+
+        // Show notification
+        function showNotification(title, message, duration = 3000) {
+            const notification = document.getElementById('notification');
+            const notificationTitle = document.getElementById('notificationTitle');
+            const notificationMessage = document.getElementById('notificationMessage');
+
+            notificationTitle.textContent = title;
+            notificationMessage.textContent = message;
+            notification.classList.add('show');
+
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, duration);
+        }
+
+        // Format date for display
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const now = new Date();
+            const diffMs = now - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMs / 3600000);
+            const diffDays = Math.floor(diffMs / 86400000);
+
+            if (diffMins < 1) return 'Just now';
+            if (diffMins < 60) return `${diffMins} min ago`;
+            if (diffHours < 24) return `${diffHours} hour${diffHours > 1 ? 's' : ''} ago`;
+            return `${diffDays} day${diffDays > 1 ? 's' : ''} ago`;
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobileMenuToggle').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('active');
         });
 
-        // Initialize Charts
-        const incidentCtx = document.getElementById('incidentChart').getContext('2d');
-        const incidentChart = new Chart(incidentCtx, {
-            type: 'line',
-            data: {
-                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-                datasets: [{
-                    label: 'Incidents',
-                    data: [12, 19, 15, 25, 22, 30, 28],
-                    borderColor: '#4F46E5',
-                    backgroundColor: 'rgba(79, 70, 229, 0.1)',
-                    tension: 0.4,
-                    fill: true
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
+        // Sidebar navigation
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = item.getAttribute('data-page');
+                
+                // Update active sidebar item
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Show selected page
+                document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+                
+                // Close mobile menu
+                if (window.innerWidth <= 1024) {
+                    document.getElementById('sidebar').classList.remove('active');
+                }
+                
+                // Initialize page-specific content
+                initializePage(page);
+            });
+        });
+
+        // Initialize page-specific content
+        function initializePage(page) {
+            switch (page) {
+                case 'dashboard':
+                    initializeDashboard();
+                    break;
+                case 'tracking':
+                    initializeTracking();
+                    break;
+                case 'alerts':
+                    initializeAlerts();
+                    break;
+                case 'efir':
+                    initializeEFIR();
+                    break;
+                case 'tourists':
+                    initializeTourists();
+                    break;
+                case 'analytics':
+                    initializeAnalytics();
+                    break;
+                case 'settings':
+                    initializeSettings();
+                    break;
+            }
+        }
+
+        // Initialize Dashboard
+        function initializeDashboard() {
+            // Update stats
+            document.getElementById('touristCount').textContent = tourists.filter(t => t.status === 'active').length.toLocaleString();
+            document.getElementById('safetyScore').textContent = Math.floor(Math.random() * 5 + 95) + '%';
+            document.getElementById('alertCount').textContent = alerts.filter(a => a.status === 'active').length;
+            document.getElementById('responseTime').textContent = (Math.random() * 2 + 2).toFixed(1) + ' min';
+            
+            // Update alerts list
+            updateAlertsList();
+            
+            // Update incidents table
+            updateIncidentsTable();
+            
+            // Initialize map if not already initialized
+            if (!window.dashboardMap) {
+                window.dashboardMap = L.map('map').setView([28.6139, 77.2090], 12);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(window.dashboardMap);
+                
+                // Add tourist markers
+                updateTouristMarkers(window.dashboardMap);
+                
+                // Add incident markers
+                updateIncidentMarkers(window.dashboardMap);
+            }
+            
+            // Initialize charts if not already initialized
+            if (!window.incidentChart) {
+                initializeIncidentChart();
+            }
+        }
+
+        // Update alerts list
+        function updateAlertsList() {
+            const alertsList = document.getElementById('alertsList');
+            alertsList.innerHTML = '';
+            
+            const activeAlerts = alerts.filter(a => a.status === 'active').slice(0, 5);
+            
+            activeAlerts.forEach(alert => {
+                const alertItem = document.createElement('div');
+                alertItem.className = `alert-item ${alert.type}`;
+                alertItem.innerHTML = `
+                    <div class="alert-header">
+                        <span class="alert-type">${alert.type}</span>
+                        <span class="alert-time">${formatDate(alert.time)}</span>
+                    </div>
+                    <p class="alert-message">${alert.message}</p>
+                    <div class="alert-actions">
+                        <button class="btn btn-primary" onclick="respondToAlert('${alert.id}')">Respond</button>
+                        <button class="btn btn-secondary" onclick="viewAlertDetails('${alert.id}')">Details</button>
+                    </div>
+                `;
+                alertsList.appendChild(alertItem);
+            });
+            
+            if (activeAlerts.length === 0) {
+                alertsList.innerHTML = '<p style="text-align: center; color: #94A3B8;">No active alerts</p>';
+            }
+        }
+
+        // Update incidents table
+        function updateIncidentsTable() {
+            const tableBody = document.getElementById('incidentsTableBody');
+            tableBody.innerHTML = '';
+            
+            incidents.slice(0, 5).forEach(incident => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${incident.id}</td>
+                    <td>${incident.type}</td>
+                    <td>${incident.location}</td>
+                    <td><span class="status-badge ${incident.status}">${incident.status}</span></td>
+                    <td>${formatDate(incident.time)}</td>
+                    <td>
+                        <button class="btn btn-primary" onclick="viewIncidentDetails('${incident.id}')">View</button>
+                        <button class="btn btn-secondary" onclick="updateIncidentStatus('${incident.id}')">Update</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Update tourist markers on map
+        function updateTouristMarkers(map) {
+            // Clear existing markers
+            if (window.touristMarkers) {
+                window.touristMarkers.forEach(marker => map.removeLayer(marker));
+            }
+            window.touristMarkers = [];
+            
+            // Add new markers
+            tourists.forEach(tourist => {
+                const marker = L.marker([tourist.lat, tourist.lng]).addTo(map);
+                marker.bindPopup(`
+                    <b>${tourist.name}</b><br>
+                    Nationality: ${tourist.nationality}<br>
+                    Status: ${tourist.status}<br>
+                    Location: ${tourist.location}
+                `);
+                window.touristMarkers.push(marker);
+            });
+        }
+
+        // Update incident markers on map
+        function updateIncidentMarkers(map) {
+            // Clear existing markers
+            if (window.incidentMarkers) {
+                window.incidentMarkers.forEach(marker => map.removeLayer(marker));
+            }
+            window.incidentMarkers = [];
+            
+            // Add new markers
+            incidents.filter(i => i.status === 'active').forEach(incident => {
+                // For demo purposes, we'll use random coordinates near Delhi
+                const lat = 28.6139 + (Math.random() - 0.5) * 0.1;
+                const lng = 77.2090 + (Math.random() - 0.5) * 0.1;
+                
+                const marker = L.marker([lat, lng]).addTo(map);
+                marker.bindPopup(`
+                    <b>${incident.id}</b><br>
+                    Type: ${incident.type}<br>
+                    Location: ${incident.location}<br>
+                    Status: ${incident.status}
+                `);
+                window.incidentMarkers.push(marker);
+            });
+        }
+
+        // Initialize Incident Chart
+        function initializeIncidentChart() {
+            const incidentCtx = document.getElementById('incidentChart').getContext('2d');
+            window.incidentChart = new Chart(incidentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [{
+                        label: 'Incidents',
+                        data: [12, 19, 15, 25, 22, 30, 28],
+                        borderColor: '#4F46E5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
                 },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
-                        },
-                        ticks: {
-                            color: '#CBD5E1'
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
                         }
                     },
-                    x: {
-                        grid: {
-                            color: 'rgba(255, 255, 255, 0.1)'
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#CBD5E1'
+                            }
                         },
-                        ticks: {
-                            color: '#CBD5E1'
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#CBD5E1'
+                            }
                         }
                     }
                 }
-            }
-        });
-
-        // Tab Switching
-        function switchTab(tabName) {
-            // Hide all tab contents
-            document.querySelectorAll('.tab-content').forEach(content => {
-                content.classList.remove('active');
             });
-            
-            // Remove active class from all tabs
-            document.querySelectorAll('.tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            
-            // Show selected tab content
-            document.getElementById(tabName).classList.add('active');
-            
-            // Add active class to clicked tab
-            event.target.classList.add('active');
-            
-            // Initialize charts when tabs are opened
-            if (tabName === 'heatmap' && !window.heatmapChart) {
-                initializeHeatmapChart();
-            } else if (tabName === 'response' && !window.responseChart) {
-                initializeResponseChart();
-            }
         }
+
+        // Tab switching for dashboard analytics
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                const tabName = tab.getAttribute('data-tab');
+                
+                // Update active tab
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show selected tab content
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById(tabName).classList.add('active');
+                
+                // Initialize charts when tabs are opened
+                if (tabName === 'heatmap' && !window.heatmapChart) {
+                    initializeHeatmapChart();
+                } else if (tabName === 'response' && !window.responseChart) {
+                    initializeResponseChart();
+                }
+            });
+        });
 
         // Initialize Heatmap Chart
         function initializeHeatmapChart() {
@@ -999,16 +1994,765 @@
             });
         }
 
+        // Initialize Tracking Page
+        function initializeTracking() {
+            // Initialize tracking map if not already initialized
+            if (!window.trackingMap) {
+                window.trackingMap = L.map('trackingMap').setView([28.6139, 77.2090], 12);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(window.trackingMap);
+                
+                // Add tourist markers with real-time updates
+                updateTrackingMarkers();
+            }
+            
+            // Update tracked tourists table
+            updateTrackedTouristsTable();
+        }
+
+        // Update tracking markers
+        function updateTrackingMarkers() {
+            // Clear existing markers
+            if (window.trackingMarkers) {
+                window.trackingMarkers.forEach(marker => window.trackingMap.removeLayer(marker));
+            }
+            window.trackingMarkers = [];
+            
+            // Add new markers
+            tourists.forEach(tourist => {
+                const marker = L.marker([tourist.lat, tourist.lng]).addTo(window.trackingMap);
+                
+                // Create custom icon based on status
+                let iconColor = 'green';
+                if (tourist.status === 'emergency') iconColor = 'red';
+                else if (tourist.status === 'inactive') iconColor = 'gray';
+                
+                marker.bindPopup(`
+                    <b>${tourist.name}</b><br>
+                    Nationality: ${tourist.nationality}<br>
+                    Contact: ${tourist.contact}<br>
+                    Status: ${tourist.status}<br>
+                    Location: ${tourist.location}<br>
+                    Last Updated: ${formatDate(tourist.lastUpdated)}
+                `);
+                
+                window.trackingMarkers.push(marker);
+            });
+        }
+
+        // Update tracked tourists table
+        function updateTrackedTouristsTable() {
+            const tableBody = document.getElementById('trackedTouristsTableBody');
+            tableBody.innerHTML = '';
+            
+            tourists.forEach(tourist => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${tourist.id}</td>
+                    <td>${tourist.name}</td>
+                    <td>${tourist.nationality}</td>
+                    <td>${tourist.location}</td>
+                    <td>${formatDate(tourist.lastUpdated)}</td>
+                    <td><span class="status-badge ${tourist.status}">${tourist.status}</span></td>
+                    <td>
+                        <button class="btn btn-primary" onclick="viewTouristDetails('${tourist.id}')">View</button>
+                        <button class="btn btn-secondary" onclick="trackTourist('${tourist.id}')">Track</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize Alerts Page
+        function initializeAlerts() {
+            // Update alert counts
+            document.getElementById('emergencyAlertsCount').textContent = alerts.filter(a => a.type === 'emergency' && a.status === 'active').length;
+            document.getElementById('warningAlertsCount').textContent = alerts.filter(a => a.type === 'warning' && a.status === 'active').length;
+            document.getElementById('infoAlertsCount').textContent = alerts.filter(a => a.type === 'info' && a.status === 'active').length;
+            document.getElementById('resolvedAlertsCount').textContent = alerts.filter(a => a.status === 'resolved').length;
+            
+            // Update all alerts lists
+            updateAllAlertsLists();
+            
+            // Set up alert tab switching
+            document.querySelectorAll('[data-alert-tab]').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabName = tab.getAttribute('data-alert-tab');
+                    
+                    // Update active tab
+                    document.querySelectorAll('[data-alert-tab]').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show selected tab content
+                    document.querySelectorAll('#alerts .tab-content').forEach(content => {
+                        content.classList.remove('active');
+                    });
+                    document.getElementById(tabName).classList.add('active');
+                });
+            });
+        }
+
+        // Update all alerts lists
+        function updateAllAlertsLists() {
+            // All alerts
+            const allAlertsList = document.getElementById('allAlertsList');
+            allAlertsList.innerHTML = '';
+            
+            alerts.forEach(alert => {
+                const alertItem = createAlertItem(alert);
+                allAlertsList.appendChild(alertItem);
+            });
+            
+            if (alerts.length === 0) {
+                allAlertsList.innerHTML = '<p style="text-align: center; color: #94A3B8;">No alerts</p>';
+            }
+            
+            // Emergency alerts
+            const emergencyAlertsList = document.getElementById('emergencyAlertsList');
+            emergencyAlertsList.innerHTML = '';
+            
+            alerts.filter(a => a.type === 'emergency').forEach(alert => {
+                const alertItem = createAlertItem(alert);
+                emergencyAlertsList.appendChild(alertItem);
+            });
+            
+            if (alerts.filter(a => a.type === 'emergency').length === 0) {
+                emergencyAlertsList.innerHTML = '<p style="text-align: center; color: #94A3B8;">No emergency alerts</p>';
+            }
+            
+            // Warning alerts
+            const warningAlertsList = document.getElementById('warningAlertsList');
+            warningAlertsList.innerHTML = '';
+            
+            alerts.filter(a => a.type === 'warning').forEach(alert => {
+                const alertItem = createAlertItem(alert);
+                warningAlertsList.appendChild(alertItem);
+            });
+            
+            if (alerts.filter(a => a.type === 'warning').length === 0) {
+                warningAlertsList.innerHTML = '<p style="text-align: center; color: #94A3B8;">No warning alerts</p>';
+            }
+            
+            // Info alerts
+            const infoAlertsList = document.getElementById('infoAlertsList');
+            infoAlertsList.innerHTML = '';
+            
+            alerts.filter(a => a.type === 'info').forEach(alert => {
+                const alertItem = createAlertItem(alert);
+                infoAlertsList.appendChild(alertItem);
+            });
+            
+            if (alerts.filter(a => a.type === 'info').length === 0) {
+                infoAlertsList.innerHTML = '<p style="text-align: center; color: #94A3B8;">No information alerts</p>';
+            }
+        }
+
+        // Create alert item element
+        function createAlertItem(alert) {
+            const alertItem = document.createElement('div');
+            alertItem.className = `alert-item ${alert.type}`;
+            alertItem.innerHTML = `
+                <div class="alert-header">
+                    <span class="alert-type">${alert.type}</span>
+                    <span class="alert-time">${formatDate(alert.time)}</span>
+                </div>
+                <p class="alert-message">${alert.message}</p>
+                <p style="font-size: 0.875rem; color: #94A3B8; margin-bottom: 0.75rem;">Location: ${alert.location}</p>
+                <div class="alert-actions">
+                    ${alert.status === 'active' ? 
+                        `<button class="btn btn-primary" onclick="respondToAlert('${alert.id}')">Respond</button>` : 
+                        `<span style="color: #10B981;">Resolved</span>`
+                    }
+                    <button class="btn btn-secondary" onclick="viewAlertDetails('${alert.id}')">Details</button>
+                </div>
+            `;
+            return alertItem;
+        }
+
+        // Initialize E-FIR Page
+        function initializeEFIR() {
+            // Update FIR counts
+            document.getElementById('totalFirCount').textContent = firs.length;
+            document.getElementById('pendingFirCount').textContent = firs.filter(f => f.status === 'pending').length;
+            document.getElementById('inProgressFirCount').textContent = firs.filter(f => f.status === 'in-progress').length;
+            document.getElementById('resolvedFirCount').textContent = firs.filter(f => f.status === 'resolved').length;
+            
+            // Update FIR table
+            updateFIRTable();
+            
+            // Set up FIR form submission
+            document.getElementById('firForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const newFIR = {
+                    id: 'FIR' + String(firs.length + 1).padStart(3, '0'),
+                    complainant: document.getElementById('firComplainant').value,
+                    contact: document.getElementById('firContact').value,
+                    type: document.getElementById('firType').value,
+                    location: document.getElementById('firLocation').value,
+                    city: document.getElementById('firCity').value,
+                    date: document.getElementById('firDate').value,
+                    description: document.getElementById('firDescription').value,
+                    evidence: document.getElementById('firEvidence').value,
+                    status: 'pending',
+                    filedAt: new Date().toISOString()
+                };
+                
+                firs.push(newFIR);
+                saveData();
+                
+                // Reset form
+                document.getElementById('firForm').reset();
+                
+                // Update UI
+                updateFIRTable();
+                document.getElementById('pendingFirCount').textContent = firs.filter(f => f.status === 'pending').length;
+                document.getElementById('totalFirCount').textContent = firs.length;
+                
+                showNotification('FIR Registered', `FIR ${newFIR.id} has been registered successfully.`);
+            });
+        }
+
+        // Update FIR table
+        function updateFIRTable() {
+            const tableBody = document.getElementById('firTableBody');
+            tableBody.innerHTML = '';
+            
+            firs.slice().reverse().forEach(fir => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${fir.id}</td>
+                    <td>${fir.complainant}</td>
+                    <td>${fir.type}</td>
+                    <td>${fir.location}</td>
+                    <td>${fir.date}</td>
+                    <td><span class="status-badge ${fir.status}">${fir.status}</span></td>
+                    <td>
+                        <button class="btn btn-primary" onclick="viewFIRDetails('${fir.id}')">View</button>
+                        <button class="btn btn-secondary" onclick="updateFIRStatus('${fir.id}')">Update</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Initialize Tourists Page
+        function initializeTourists() {
+            // Update tourist grid
+            updateTouristGrid();
+            
+            // Set up search and filter
+            document.getElementById('touristSearch').addEventListener('input', filterTourists);
+            document.getElementById('touristFilter').addEventListener('change', filterTourists);
+        }
+
+        // Update tourist grid
+        function updateTouristGrid() {
+            const touristGrid = document.getElementById('touristGrid');
+            touristGrid.innerHTML = '';
+            
+            tourists.forEach(tourist => {
+                const touristCard = document.createElement('div');
+                touristCard.className = 'tourist-card';
+                touristCard.innerHTML = `
+                    <div class="tourist-header">
+                        <div class="tourist-avatar">
+                            ${tourist.name.charAt(0)}
+                        </div>
+                        <div class="tourist-info">
+                            <h3>${tourist.name}</h3>
+                            <p>ID: ${tourist.id}</p>
+                        </div>
+                    </div>
+                    <div class="tourist-body">
+                        <div class="tourist-detail">
+                            <span class="tourist-detail-label">Nationality</span>
+                            <span class="tourist-detail-value">${tourist.nationality}</span>
+                        </div>
+                        <div class="tourist-detail">
+                            <span class="tourist-detail-label">Contact</span>
+                            <span class="tourist-detail-value">${tourist.contact}</span>
+                        </div>
+                        <div class="tourist-detail">
+                            <span class="tourist-detail-label">Location</span>
+                            <span class="tourist-detail-value">${tourist.location}</span>
+                        </div>
+                        <div class="tourist-detail">
+                            <span class="tourist-detail-label">Status</span>
+                            <span class="tourist-detail-value">
+                                <span class="status-badge ${tourist.status}">${tourist.status}</span>
+                            </span>
+                        </div>
+                        <div class="tourist-detail">
+                            <span class="tourist-detail-label">Last Updated</span>
+                            <span class="tourist-detail-value">${formatDate(tourist.lastUpdated)}</span>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+                            <button class="btn btn-primary" onclick="viewTouristDetails('${tourist.id}')">View Details</button>
+                            <button class="btn btn-secondary" onclick="editTourist('${tourist.id}')">Edit</button>
+                        </div>
+                    </div>
+                `;
+                touristGrid.appendChild(touristCard);
+            });
+        }
+
+        // Filter tourists
+        function filterTourists() {
+            const searchTerm = document.getElementById('touristSearch').value.toLowerCase();
+            const filterStatus = document.getElementById('touristFilter').value;
+            
+            const touristCards = document.querySelectorAll('.tourist-card');
+            
+            touristCards.forEach(card => {
+                const name = card.querySelector('h3').textContent.toLowerCase();
+                const id = card.querySelector('p').textContent.toLowerCase();
+                const nationality = card.querySelector('.tourist-detail-value').textContent.toLowerCase();
+                const status = card.querySelector('.status-badge').textContent.toLowerCase();
+                
+                const matchesSearch = name.includes(searchTerm) || 
+                                     id.includes(searchTerm) || 
+                                     nationality.includes(searchTerm);
+                
+                const matchesFilter = filterStatus === 'all' || status === filterStatus;
+                
+                if (matchesSearch && matchesFilter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Initialize Analytics Page
+        function initializeAnalytics() {
+            // Update stats
+            document.getElementById('incidentRate').textContent = '+' + Math.floor(Math.random() * 20 + 5) + '%';
+            document.getElementById('resolutionRate').textContent = Math.floor(Math.random() * 15 + 80) + '%';
+            document.getElementById('avgResolutionTime').textContent = (Math.random() * 3 + 2).toFixed(1) + ' days';
+            document.getElementById('hotspotCount').textContent = Math.floor(Math.random() * 5 + 5);
+            
+            // Initialize charts if not already initialized
+            if (!window.analyticsTrendChart) {
+                initializeAnalyticsTrendChart();
+                initializeAnalyticsDistributionChart();
+            }
+            
+            // Initialize hotspot map if not already initialized
+            if (!window.hotspotMap) {
+                window.hotspotMap = L.map('hotspotMap').setView([28.6139, 77.2090], 11);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(window.hotspotMap);
+                
+                // Add hotspot markers
+                const hotspots = [
+                    { name: 'Taj Mahal', lat: 27.1751, lng: 78.0421, incidents: 65 },
+                    { name: 'India Gate', lat: 28.6129, lng: 77.2295, incidents: 59 },
+                    { name: 'Red Fort', lat: 28.6562, lng: 77.2410, incidents: 80 },
+                    { name: 'Qutub Minar', lat: 28.5245, lng: 77.1855, incidents: 81 },
+                    { name: 'Lotus Temple', lat: 28.5535, lng: 77.2588, incidents: 56 }
+                ];
+                
+                hotspots.forEach(hotspot => {
+                    const radius = Math.sqrt(hotspot.incidents) * 100;
+                    const circle = L.circle([hotspot.lat, hotspot.lng], {
+                        color: 'red',
+                        fillColor: '#f03',
+                        fillOpacity: 0.3,
+                        radius: radius
+                    }).addTo(window.hotspotMap);
+                    
+                    circle.bindPopup(`<b>${hotspot.name}</b><br>Incidents: ${hotspot.incidents}`);
+                });
+            }
+        }
+
+        // Initialize Analytics Trend Chart
+        function initializeAnalyticsTrendChart() {
+            const trendCtx = document.getElementById('analyticsTrendChart').getContext('2d');
+            window.analyticsTrendChart = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Incidents',
+                        data: [65, 59, 80, 81, 56, 55, 70, 85, 90, 75, 80, 95],
+                        borderColor: '#4F46E5',
+                        backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#CBD5E1'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                color: 'rgba(255, 255, 255, 0.1)'
+                            },
+                            ticks: {
+                                color: '#CBD5E1'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Analytics Distribution Chart
+        function initializeAnalyticsDistributionChart() {
+            const distributionCtx = document.getElementById('analyticsDistributionChart').getContext('2d');
+            window.analyticsDistributionChart = new Chart(distributionCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Theft', 'Medical', 'Lost Item', 'Harassment', 'Other'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(245, 158, 11, 0.7)',
+                            'rgba(139, 92, 246, 0.7)',
+                            'rgba(16, 185, 129, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#CBD5E1'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize Settings Page
+        function initializeSettings() {
+            // Set up toggle switches
+            document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                const settingId = toggle.id.replace('Toggle', '');
+                const camelCaseId = settingId.replace(/([A-Z])/g, '_$1').toLowerCase();
+                const settingName = camelCaseId.split('_').reduce((acc, word) => {
+                    return acc + word.charAt(0).toUpperCase() + word.slice(1);
+                }, '');
+                
+                // Set initial state
+                if (settings[settingName]) {
+                    toggle.classList.add('active');
+                }
+                
+                // Add click event
+                toggle.addEventListener('click', () => {
+                    toggle.classList.toggle('active');
+                    settings[settingName] = toggle.classList.contains('active');
+                });
+            });
+            
+            // Set up save settings button
+            document.getElementById('saveSettingsBtn').addEventListener('click', () => {
+                saveData();
+                showNotification('Settings Saved', 'Your settings have been saved successfully.');
+            });
+            
+            // Set up reset settings button
+            document.getElementById('resetSettingsBtn').addEventListener('click', () => {
+                if (confirm('Are you sure you want to reset all settings to default?')) {
+                    settings = {
+                        emailNotifications: true,
+                        smsAlerts: true,
+                        pushNotifications: false,
+                        emergencyAlerts: true,
+                        warningAlerts: true,
+                        informationAlerts: false,
+                        showTouristLocations: true,
+                        showIncidentMarkers: true,
+                        showHotspotAreas: true
+                    };
+                    
+                    // Update toggle switches
+                    document.querySelectorAll('.toggle-switch').forEach(toggle => {
+                        const settingId = toggle.id.replace('Toggle', '');
+                        const camelCaseId = settingId.replace(/([A-Z])/g, '_$1').toLowerCase();
+                        const settingName = camelCaseId.split('_').reduce((acc, word) => {
+                            return acc + word.charAt(0).toUpperCase() + word.slice(1);
+                        }, '');
+                        
+                        if (settings[settingName]) {
+                            toggle.classList.add('active');
+                        } else {
+                            toggle.classList.remove('active');
+                        }
+                    });
+                    
+                    saveData();
+                    showNotification('Settings Reset', 'All settings have been reset to default.');
+                }
+            });
+        }
+
+        // Button event handlers
+        document.getElementById('refreshAlertsBtn').addEventListener('click', () => {
+            updateAlertsList();
+            showNotification('Alerts Refreshed', 'The alerts list has been refreshed.');
+        });
+
+        document.getElementById('refreshTrackingBtn').addEventListener('click', () => {
+            updateTrackingMarkers();
+            updateTrackedTouristsTable();
+            showNotification('Tracking Refreshed', 'Tourist tracking data has been refreshed.');
+        });
+
+        document.getElementById('refreshAllAlertsBtn').addEventListener('click', () => {
+            updateAllAlertsLists();
+            document.getElementById('emergencyAlertsCount').textContent = alerts.filter(a => a.type === 'emergency' && a.status === 'active').length;
+            document.getElementById('warningAlertsCount').textContent = alerts.filter(a => a.type === 'warning' && a.status === 'active').length;
+            document.getElementById('infoAlertsCount').textContent = alerts.filter(a => a.type === 'info' && a.status === 'active').length;
+            showNotification('Alerts Refreshed', 'All alerts have been refreshed.');
+        });
+
+        document.getElementById('refreshFirBtn').addEventListener('click', () => {
+            updateFIRTable();
+            showNotification('FIRs Refreshed', 'The FIR list has been refreshed.');
+        });
+
+        document.getElementById('downloadReportBtn').addEventListener('click', () => {
+            showNotification('Report Generated', 'Your report has been generated and will be downloaded shortly.');
+        });
+
+        document.getElementById('addIncidentBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('addAlertBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('addTouristBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('searchTouristBtn').addEventListener('click', () => {
+            document.getElementById('touristSearch').focus();
+        });
+
+        document.getElementById('trackingFilterBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('expandMapBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('filterMapBtn').addEventListener('click', () => {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        });
+
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to logout?')) {
+                showNotification('Logged Out', 'You have been logged out successfully.');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            }
+        });
+
+        document.getElementById('notificationClose').addEventListener('click', () => {
+            document.getElementById('notification').classList.remove('show');
+        });
+
+        // Action functions
+        function respondToAlert(alertId) {
+            const alert = alerts.find(a => a.id === alertId);
+            if (alert) {
+                alert.status = 'resolved';
+                saveData();
+                updateAlertsList();
+                updateAllAlertsLists();
+                document.getElementById('alertCount').textContent = alerts.filter(a => a.status === 'active').length;
+                showNotification('Alert Resolved', `Alert ${alertId} has been marked as resolved.`);
+            }
+        }
+
+        function viewAlertDetails(alertId) {
+            const alert = alerts.find(a => a.id === alertId);
+            if (alert) {
+                showNotification('Alert Details', `Type: ${alert.type}\nMessage: ${alert.message}\nLocation: ${alert.location}\nTime: ${formatDate(alert.time)}`, 5000);
+            }
+        }
+
+        function viewIncidentDetails(incidentId) {
+            const incident = incidents.find(i => i.id === incidentId);
+            if (incident) {
+                showNotification('Incident Details', `ID: ${incident.id}\nType: ${incident.type}\nLocation: ${incident.location}\nStatus: ${incident.status}\nTime: ${formatDate(incident.time)}\nDescription: ${incident.description}`, 5000);
+            }
+        }
+
+        function updateIncidentStatus(incidentId) {
+            const incident = incidents.find(i => i.id === incidentId);
+            if (incident) {
+                const newStatus = prompt('Enter new status (active, resolved, pending):', incident.status);
+                if (newStatus && ['active', 'resolved', 'pending'].includes(newStatus)) {
+                    incident.status = newStatus;
+                    saveData();
+                    updateIncidentsTable();
+                    showNotification('Status Updated', `Incident ${incidentId} status has been updated to ${newStatus}.`);
+                }
+            }
+        }
+
+        function viewTouristDetails(touristId) {
+            const tourist = tourists.find(t => t.id === touristId);
+            if (tourist) {
+                showNotification('Tourist Details', `ID: ${tourist.id}\nName: ${tourist.name}\nNationality: ${tourist.nationality}\nContact: ${tourist.contact}\nLocation: ${tourist.location}\nStatus: ${tourist.status}\nLast Updated: ${formatDate(tourist.lastUpdated)}`, 5000);
+            }
+        }
+
+        function trackTourist(touristId) {
+            const tourist = tourists.find(t => t.id === touristId);
+            if (tourist) {
+                // Switch to tracking page and center map on tourist
+                document.querySelector('[data-page="tracking"]').click();
+                
+                setTimeout(() => {
+                    window.trackingMap.setView([tourist.lat, tourist.lng], 15);
+                    showNotification('Tracking Tourist', `Now tracking ${tourist.name}. Map centered on their location.`);
+                }, 300);
+            }
+        }
+
+        function editTourist(touristId) {
+            showNotification('Feature Coming Soon', 'This feature will be available in the next update.');
+        }
+
+        function viewFIRDetails(firId) {
+            const fir = firs.find(f => f.id === firId);
+            if (fir) {
+                showNotification('FIR Details', `ID: ${fir.id}\nComplainant: ${fir.complainant}\nContact: ${fir.contact}\nType: ${fir.type}\nLocation: ${fir.location}\nCity: ${fir.city}\nDate: ${fir.date}\nDescription: ${fir.description}\nEvidence: ${fir.evidence || 'None'}\nStatus: ${fir.status}\nFiled At: ${formatDate(fir.filedAt)}`, 7000);
+            }
+        }
+
+        function updateFIRStatus(firId) {
+            const fir = firs.find(f => f.id === firId);
+            if (fir) {
+                const newStatus = prompt('Enter new status (pending, in-progress, resolved):', fir.status);
+                if (newStatus && ['pending', 'in-progress', 'resolved'].includes(newStatus)) {
+                    fir.status = newStatus;
+                    saveData();
+                    updateFIRTable();
+                    document.getElementById('pendingFirCount').textContent = firs.filter(f => f.status === 'pending').length;
+                    document.getElementById('inProgressFirCount').textContent = firs.filter(f => f.status === 'in-progress').length;
+                    document.getElementById('resolvedFirCount').textContent = firs.filter(f => f.status === 'resolved').length;
+                    showNotification('Status Updated', `FIR ${firId} status has been updated to ${newStatus}.`);
+                }
+            }
+        }
+
         // Simulate real-time updates
         setInterval(() => {
             // Update tourist count
-            const touristCount = document.querySelector('.stat-value');
+            const touristCount = document.getElementById('touristCount');
             if (touristCount) {
                 const currentCount = parseInt(touristCount.textContent.replace(',', ''));
                 const newCount = currentCount + Math.floor(Math.random() * 10) - 5;
                 touristCount.textContent = Math.max(1000, newCount).toLocaleString();
             }
+            
+            // Update alert count
+            const alertCount = document.getElementById('alertCount');
+            if (alertCount) {
+                const currentCount = parseInt(alertCount.textContent);
+                const newCount = alerts.filter(a => a.status === 'active').length;
+                alertCount.textContent = newCount;
+            }
+            
+            // Randomly add new alerts
+            if (Math.random() < 0.1) {
+                const alertTypes = ['emergency', 'warning', 'info'];
+                const alertMessages = [
+                    'Medical emergency reported',
+                    'Traffic congestion reported',
+                    'Weather update available',
+                    'Suspicious activity reported',
+                    'Tourist assistance requested'
+                ];
+                const locations = ['Taj Mahal', 'India Gate', 'Red Fort', 'Qutub Minar', 'Lotus Temple', 'Connaught Place'];
+                
+                const newAlert = {
+                    id: 'A' + String(alerts.length + 1).padStart(3, '0'),
+                    type: alertTypes[Math.floor(Math.random() * alertTypes.length)],
+                    message: alertMessages[Math.floor(Math.random() * alertMessages.length)],
+                    location: locations[Math.floor(Math.random() * locations.length)],
+                    time: new Date().toISOString(),
+                    status: 'active'
+                };
+                
+                alerts.push(newAlert);
+                saveData();
+                
+                // Update UI if on dashboard or alerts page
+                if (document.getElementById('dashboard').classList.contains('active')) {
+                    updateAlertsList();
+                }
+                
+                if (document.getElementById('alerts').classList.contains('active')) {
+                    updateAllAlertsLists();
+                    document.getElementById('emergencyAlertsCount').textContent = alerts.filter(a => a.type === 'emergency' && a.status === 'active').length;
+                    document.getElementById('warningAlertsCount').textContent = alerts.filter(a => a.type === 'warning' && a.status === 'active').length;
+                    document.getElementById('infoAlertsCount').textContent = alerts.filter(a => a.type === 'info' && a.status === 'active').length;
+                }
+                
+                // Show notification for new alert
+                showNotification('New Alert', `${newAlert.type}: ${newAlert.message}`);
+            }
+            
+            // Randomly update tourist locations
+            if (Math.random() < 0.2) {
+                const randomTourist = tourists[Math.floor(Math.random() * tourists.length)];
+                randomTourist.lat += (Math.random() - 0.5) * 0.01;
+                randomTourist.lng += (Math.random() - 0.5) * 0.01;
+                randomTourist.lastUpdated = new Date().toISOString();
+                saveData();
+                
+                // Update markers if on tracking page
+                if (document.getElementById('tracking').classList.contains('active') && window.trackingMap) {
+                    updateTrackingMarkers();
+                }
+                
+                // Update markers if on dashboard
+                if (document.getElementById('dashboard').classList.contains('active') && window.dashboardMap) {
+                    updateTouristMarkers(window.dashboardMap);
+                }
+            }
         }, 5000);
+
+        // Initialize the application
+        loadData();
+        initializeDashboard();
     </script>
 </body>
 </html>
