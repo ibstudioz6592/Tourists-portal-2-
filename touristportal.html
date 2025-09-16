@@ -9,45 +9,43 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <style>
         :root {
-            --primary: #4F46E5;
-            --primary-dark: #4338CA;
-            --secondary: #10B981;
-            --danger: #EF4444;
-            --warning: #F59E0B;
-            --dark: #1F2937;
-            --light: #F9FAFB;
+            --primary: #1e40af;
+            --primary-dark: #1e3a8a;
+            --secondary: #0d9488;
+            --accent: #4f46e5;
+            --danger: #b91c1c;
+            --warning: #d97706;
+            --dark: #0f172a;
+            --light: #f8fafc;
             --glass: rgba(255, 255, 255, 0.1);
             --glass-border: rgba(255, 255, 255, 0.2);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            background: linear-gradient(135deg, #0c4a6e 0%, #1e3a8a 100%);
             color: var(--light);
             min-height: 100vh;
             overflow-x: hidden;
         }
-
         /* Header Styles */
         .header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: var(--glass);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--glass-border);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             z-index: 1000;
             padding: 1rem 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
-
         .header-content {
             max-width: 1400px;
             margin: 0 auto;
@@ -56,13 +54,12 @@
             justify-content: space-between;
             align-items: center;
         }
-
         .logo {
             display: flex;
             align-items: center;
             gap: 1rem;
+            text-decoration: none;
         }
-
         .logo-icon {
             width: 50px;
             height: 50px;
@@ -73,39 +70,49 @@
             justify-content: center;
             font-size: 1.5rem;
             color: white;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
         }
-
         .logo-text {
             font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(135deg, #fff, #CBD5E1);
+            background: linear-gradient(135deg, #fff, #e2e8f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .nav-menu {
             display: flex;
             gap: 2rem;
             align-items: center;
         }
-
         .nav-link {
-            color: #CBD5E1;
+            color: #cbd5e1;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
         }
-
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
         .nav-link:hover {
             color: white;
         }
-
+        .nav-link:hover::after {
+            width: 100%;
+        }
         .header-actions {
             display: flex;
             align-items: center;
             gap: 1.5rem;
         }
-
         .btn {
             padding: 0.75rem 1.5rem;
             border: none;
@@ -118,37 +125,35 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
         }
-
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
         }
-
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 10px 20px rgba(30, 64, 175, 0.4);
         }
-
         .btn-secondary {
             background: var(--glass);
-            color: #CBD5E1;
+            color: #cbd5e1;
             border: 1px solid var(--glass-border);
         }
-
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
+            color: white;
         }
-
         /* Hero Section */
         .hero {
             margin-top: 100px;
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-
         .hero::before {
             content: '';
             position: absolute;
@@ -160,36 +165,36 @@
             opacity: 0.1;
             animation: rotate 30s linear infinite;
         }
-
         @keyframes rotate {
             from { transform: rotate(0deg); }
             to { transform: rotate(360deg); }
         }
-
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             position: relative;
             z-index: 1;
         }
-
         .hero-title {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #fff, #CBD5E1);
+            background: linear-gradient(135deg, #fff, #e2e8f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: fadeInUp 0.8s ease;
+            line-height: 1.2;
         }
-
         .hero-subtitle {
-            font-size: 1.25rem;
-            color: #CBD5E1;
+            font-size: 1.5rem;
+            color: #cbd5e1;
             margin-bottom: 3rem;
             animation: fadeInUp 0.8s ease 0.2s both;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
-
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -200,23 +205,29 @@
                 transform: translateY(0);
             }
         }
-
         .emergency-btn {
             position: relative;
-            padding: 1.5rem 3rem;
-            background: linear-gradient(135deg, var(--danger), #DC2626);
+            padding: 1.75rem 3.5rem;
+            background: linear-gradient(135deg, var(--danger), #991b1b);
             border: none;
             border-radius: 50px;
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 700;
             color: white;
             cursor: pointer;
             overflow: hidden;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4);
-            animation: fadeInUp 0.8s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(185, 28, 28, 0.4);
+            animation: fadeInUp 0.8s ease 0.4s both, pulse 2s infinite;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
         }
-
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(185, 28, 28, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(185, 28, 28, 0); }
+        }
         .emergency-btn::before {
             content: '';
             position: absolute;
@@ -229,41 +240,31 @@
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
-
         .emergency-btn:hover::before {
             width: 300px;
             height: 300px;
         }
-
         .emergency-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(239, 68, 68, 0.5);
+            box-shadow: 0 15px 40px rgba(185, 28, 28, 0.5);
         }
-
-        /* Features Section */
-        .features {
+        .emergency-btn i {
+            font-size: 1.75rem;
+        }
+        /* Stats Section */
+        .stats {
             padding: 4rem 2rem;
-            max-width: 1400px;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .stats-container {
+            max-width: 1200px;
             margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 3rem;
-            background: linear-gradient(135deg, #fff, #CBD5E1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
-        .feature-card {
+        .stat-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
@@ -271,63 +272,228 @@
             padding: 2rem;
             text-align: center;
             transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            cursor: pointer;
         }
-
-        .feature-card:hover {
+        .stat-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
             border-color: var(--primary);
         }
-
-        .feature-icon {
+        .stat-number {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
-        .feature-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
+        .stat-label {
+            font-size: 1.1rem;
+            color: #cbd5e1;
         }
-
-        .feature-description {
-            color: #CBD5E1;
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
             line-height: 1.6;
         }
-
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        .feature-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transform: translateX(-100%);
+            transition: transform 0.5s ease;
+        }
+        .feature-card:hover::before {
+            transform: translateX(0);
+        }
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .feature-title {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .feature-description {
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+        /* Map Section */
+        .map-section {
+            padding: 5rem 2rem;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        .map-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .map-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .map-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        #map {
+            height: 500px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--glass-border);
+        }
+        /* Testimonials Section */
+        .testimonials {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        .testimonial-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+        .testimonial-text {
+            font-style: italic;
+            color: #e2e8f0;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+        .author-info {
+            flex: 1;
+        }
+        .author-name {
+            font-weight: 600;
+            color: white;
+            font-size: 1.1rem;
+        }
+        .author-location {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        .testimonial-rating {
+            color: var(--warning);
+            margin-bottom: 1rem;
+        }
         /* Registration Section */
         .registration {
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(67, 56, 202, 0.1));
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, rgba(30, 64, 175, 0.1), rgba(30, 58, 138, 0.1));
         }
-
         .registration-container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 3rem;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-lg);
         }
-
         .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
-
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             font-weight: 500;
-            color: #CBD5E1;
+            color: #e2e8f0;
         }
-
         .form-control {
             width: 100%;
-            padding: 0.75rem 1rem;
+            padding: 0.875rem 1.25rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
             border-radius: 10px;
@@ -335,100 +501,510 @@
             font-size: 1rem;
             transition: all 0.3s ease;
         }
-
         .form-control:focus {
             outline: none;
             border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.2);
+            background: rgba(255, 255, 255, 0.08);
         }
-
+        .id-methods {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .id-method {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .id-method:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+        .id-method.active {
+            background: rgba(30, 64, 175, 0.2);
+            border-color: var(--primary);
+            box-shadow: 0 5px 15px rgba(30, 64, 175, 0.3);
+        }
+        .id-method-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+        .id-method-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        .id-method-description {
+            font-size: 0.95rem;
+            color: #94a3b8;
+        }
+        .form-section {
+            display: none;
+        }
+        .form-section.active {
+            display: block;
+        }
+        .digilocker-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .digilocker-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.4);
+        }
+        .verification-status {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            font-weight: 500;
+            display: none;
+        }
+        .verification-status.success {
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #10b981;
+        }
+        .verification-status.error {
+            background: rgba(239, 68, 68, 0.2);
+            border: 1px solid rgba(239, 68, 68, 0.5);
+            color: #ef4444;
+        }
+        .verification-status.info {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.5);
+            color: #3b82f6;
+        }
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background-color: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            margin: 5% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+        }
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .close:hover {
+            color: white;
+        }
+        .modal-body {
+            margin-bottom: 1.5rem;
+        }
+        .modal-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .digilocker-logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+        .digilocker-form {
+            text-align: left;
+        }
+        .digilocker-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        /* Digital ID Card Styles */
+        .digital-id-card {
+            background: linear-gradient(135deg, #1e3a8a, #0c4a6e);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .digital-id-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .digital-id-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .digital-id-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .digital-id-logo i {
+            font-size: 1.5rem;
+            color: white;
+        }
+        .digital-id-logo span {
+            font-weight: 700;
+            color: white;
+        }
+        .digital-id-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .digital-id-body {
+            display: flex;
+            gap: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        .digital-id-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            overflow: hidden;
+        }
+        .digital-id-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .digital-id-info {
+            flex: 1;
+            text-align: left;
+        }
+        .digital-id-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        .digital-id-details {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        .digital-id-number {
+            font-family: monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            margin-top: 1rem;
+            letter-spacing: 1px;
+        }
+        .digital-id-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        .digital-id-qr {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        .digital-id-validity {
+            text-align: right;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.8rem;
+        }
+        .digital-id-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+        .feature-detail-modal .modal-content {
+            max-width: 800px;
+        }
+        .feature-detail-content {
+            text-align: left;
+        }
+        .feature-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .feature-detail-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .feature-detail-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+        .feature-detail-description {
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .feature-detail-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .feature-detail-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        .feature-detail-list li i {
+            color: var(--secondary);
+            margin-top: 0.25rem;
+        }
+        .feature-detail-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .feature-stat {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .feature-stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        .feature-stat-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
         /* Emergency Contacts */
         .emergency-contacts {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .contacts-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
-
         .contact-card {
             background: var(--glass);
             backdrop-filter: blur(20px);
             border: 1px solid var(--glass-border);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 2.5rem;
             text-align: center;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
         }
-
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
         .contact-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-lg);
         }
-
         .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
             color: var(--primary);
         }
-
         .contact-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-number {
             font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: white;
+        }
+        .contact-number {
+            font-size: 2rem;
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 1rem;
         }
-
         /* Footer */
         .footer {
             background: var(--dark);
-            padding: 3rem 2rem 1rem;
+            padding: 4rem 2rem 1rem;
             margin-top: 4rem;
         }
-
         .footer-content {
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
         }
-
         .footer-section h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
             color: var(--primary);
         }
-
         .footer-section p, .footer-section a {
-            color: #CBD5E1;
+            color: #cbd5e1;
             text-decoration: none;
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 0.75rem;
+            display: block;
         }
-
         .footer-section a:hover {
             color: white;
         }
-
+        .newsletter {
+            margin-top: 1rem;
+        }
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px 0 0 10px;
+            color: white;
+            font-size: 1rem;
+        }
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .newsletter-btn {
+            padding: 0.75rem 1.25rem;
+            background: var(--primary);
+            border: none;
+            border-radius: 0 10px 10px 0;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .newsletter-btn:hover {
+            background: var(--primary-dark);
+        }
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            transition: all 0.3s ease;
+        }
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
             border-top: 1px solid var(--glass-border);
-            color: #94A3B8;
+            color: #94a3b8;
         }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
@@ -439,8 +1015,35 @@
                 font-size: 2.5rem;
             }
             
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+            
             .features-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .id-methods {
+                flex-direction: column;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input, .newsletter-btn {
+                width: 100%;
+                border-radius: 10px;
+                margin-bottom: 0.5rem;
+            }
+            
+            .digital-id-body {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .digital-id-info {
+                text-align: center;
             }
         }
     </style>
@@ -449,14 +1052,14 @@
     <!-- Header -->
     <header class="header">
         <div class="header-content">
-            <div class="logo">
+            <a href="index.html" class="logo">
                 <div class="logo-icon">
                     <i class="fas fa-shield-alt"></i>
                 </div>
                 <div class="logo-text">Tourist Safety System</div>
-            </div>
+            </a>
             <nav class="nav-menu">
-                <a href="#home" class="nav-link">Home</a>
+                <a href="index.html" class="nav-link">Home</a>
                 <a href="#features" class="nav-link">Features</a>
                 <a href="#register" class="nav-link">Register</a>
                 <a href="#contacts" class="nav-link">Emergency Contacts</a>
@@ -468,7 +1071,7 @@
             </div>
         </div>
     </header>
-
+    
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
@@ -483,82 +1086,240 @@
             </button>
         </div>
     </section>
-
+    
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-card" onclick="showStatDetails('tourists')">
+                <div class="stat-number">2.5M+</div>
+                <div class="stat-label">Tourists Protected</div>
+            </div>
+            <div class="stat-card" onclick="showStatDetails('response')">
+                <div class="stat-number">98.7%</div>
+                <div class="stat-label">Emergency Response Rate</div>
+            </div>
+            <div class="stat-card" onclick="showStatDetails('monitoring')">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Monitoring & Support</div>
+            </div>
+            <div class="stat-card" onclick="showStatDetails('states')">
+                <div class="stat-number">28</div>
+                <div class="stat-label">States Covered</div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Features Section -->
     <section id="features" class="features">
-        <h2 class="section-title">Key Features</h2>
+        <h2 class="section-title">Advanced Safety Features</h2>
+        <p class="section-subtitle">Our comprehensive system leverages cutting-edge technology to ensure your safety throughout your journey</p>
+        
         <div class="features-grid">
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('digital-id')">
+                <div class="feature-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="feature-title">Digital ID Creation</h3>
+                <p class="feature-description">Secure digital ID creation using Aadhaar or Google authentication with biometric verification for enhanced security.</p>
+            </div>
+            <div class="feature-card" onclick="showFeatureDetail('location-tracking')">
                 <div class="feature-icon">
                     <i class="fas fa-map-marker-alt"></i>
                 </div>
-                <h3 class="feature-title">Real-time Tracking</h3>
-                <p class="feature-description">GPS-enabled tracking with offline maps and geofencing technology to keep you safe at all times.</p>
+                <h3 class="feature-title">Real-time Location Tracking</h3>
+                <p class="feature-description">Advanced GPS-enabled tracking with offline maps and location history for complete journey monitoring.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('sos')">
                 <div class="feature-icon">
-                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-exclamation-triangle"></i>
                 </div>
-                <h3 class="feature-title">Smart Alerts</h3>
-                <p class="feature-description">Instant notifications for emergencies, weather updates, and safety warnings in your area.</p>
+                <h3 class="feature-title">SOS Emergency Button</h3>
+                <p class="feature-description">One-touch emergency alert system that notifies authorities and emergency contacts with your precise location.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('geo-fence')">
                 <div class="feature-icon">
-                    <i class="fas fa-comments"></i>
+                    <i class="fas fa-draw-polygon"></i>
                 </div>
-                <h3 class="feature-title">Emergency Communication</h3>
-                <p class="feature-description">Direct contact with authorities and emergency services with just one tap.</p>
+                <h3 class="feature-title">Geo-fence Alert System</h3>
+                <p class="feature-description">Set safe zones and receive instant alerts when entering or leaving designated areas with risk assessment.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('health')">
                 <div class="feature-icon">
                     <i class="fas fa-heartbeat"></i>
                 </div>
                 <h3 class="feature-title">Health Monitoring</h3>
-                <p class="feature-description">Integration with smart wearables for real-time health tracking and emergency alerts.</p>
+                <p class="feature-description">Track vital health metrics and receive alerts for medical emergencies with integration to nearby hospitals.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('multilingual')">
                 <div class="feature-icon">
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-language"></i>
                 </div>
-                <h3 class="feature-title">Secure Data</h3>
-                <p class="feature-description">End-to-end encryption and blockchain technology to protect your personal information.</p>
+                <h3 class="feature-title">Multilingual Support</h3>
+                <p class="feature-description">Access the system in 10+ Indian languages with real-time translation for seamless communication.</p>
             </div>
-            <div class="feature-card">
+            <div class="feature-card" onclick="showFeatureDetail('offline')">
+                <div class="feature-icon">
+                    <i class="fas fa-wifi-slash"></i>
+                </div>
+                <h3 class="feature-title">Offline Emergency Mode</h3>
+                <p class="feature-description">Continue using essential features even without internet connectivity through our offline mode technology.</p>
+            </div>
+            <div class="feature-card" onclick="showFeatureDetail('sharing')">
                 <div class="feature-icon">
                     <i class="fas fa-users"></i>
                 </div>
-                <h3 class="feature-title">Travel Buddy</h3>
-                <p class="feature-description">Connect with fellow travelers for enhanced safety and shared experiences.</p>
+                <h3 class="feature-title">Family/Friend Sharing</h3>
+                <p class="feature-description">Share your location and travel status with family and friends for added safety and peace of mind.</p>
             </div>
         </div>
     </section>
-
+    
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="map-container">
+            <h2 class="map-title">Safe Zones & Tourist Spots</h2>
+            <p class="map-subtitle">Explore safe tourist destinations across India with real-time safety updates and recommendations</p>
+            <div id="map"></div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2 class="section-title">Tourist Experiences</h2>
+        <p class="section-subtitle">Hear from travelers who have experienced the safety and security of our system</p>
+        
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The Tourist Safety System gave me peace of mind during my solo trip to Rajasthan. The real-time tracking and emergency features made me feel secure at all times."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah Johnson" class="author-avatar">
+                    <div class="author-info">
+                        <div class="author-name">Sarah Johnson</div>
+                        <div class="author-location">United Kingdom</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"When I had a medical emergency in Kerala, the SOS button connected me immediately to nearby hospitals. The response was incredibly fast and professional."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="author-avatar">
+                    <div class="author-info">
+                        <div class="author-name">Michael Chen</div>
+                        <div class="author-location">Singapore</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="testimonial-text">"The geo-fence alerts were invaluable during my family trip to Goa. We always knew when we were entering or leaving safe zones, which was especially reassuring with children."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya Sharma" class="author-avatar">
+                    <div class="author-info">
+                        <div class="author-name">Priya Sharma</div>
+                        <div class="author-location">India</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Registration Section -->
     <section id="register" class="registration">
         <div class="registration-container">
             <h2 class="section-title">Tourist Registration</h2>
-            <p style="text-align: center; color: #CBD5E1; margin-bottom: 2rem;">
-                Register with the Tourist Safety System for enhanced protection and real-time monitoring
+            <p style="text-align: center; color: #cbd5e1; margin-bottom: 2.5rem; font-size: 1.1rem;">
+                Register with the Tourist Safety System using your Aadhaar card or Google account for enhanced protection and real-time monitoring
             </p>
+            
+            <div class="id-methods">
+                <div class="id-method active" onclick="toggleIdMethod('aadhaar')">
+                    <div class="id-method-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="id-method-title">Aadhaar Card</div>
+                    <div class="id-method-description">For Indian citizens</div>
+                </div>
+                <div class="id-method" onclick="toggleIdMethod('google')">
+                    <div class="id-method-icon">
+                        <i class="fab fa-google"></i>
+                    </div>
+                    <div class="id-method-title">Google Account</div>
+                    <div class="id-method-description">For international tourists</div>
+                </div>
+            </div>
+            
             <form id="registrationForm">
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <!-- Aadhaar Registration Form -->
+                <div id="aadhaar-form" class="form-section active">
                     <div class="form-group">
-                        <label for="firstName">First Name *</label>
-                        <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
+                        <label for="aadhaar-number">Aadhaar Number *</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" id="aadhaar-number" class="form-control" placeholder="Enter 12-digit Aadhaar number" maxlength="12" pattern="[0-9]{12}" required>
+                            <button type="button" class="digilocker-btn" onclick="initiateDigilockerAuth()">
+                                <i class="fas fa-lock"></i> Verify with Digilocker
+                            </button>
+                        </div>
+                        <div id="aadhaar-verification-status" class="verification-status"></div>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last Name *</label>
-                        <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
+                        <label for="aadhaar-name">Name as per Aadhaar *</label>
+                        <input type="text" id="aadhaar-name" class="form-control" placeholder="Enter name as per Aadhaar" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="aadhaar-phone">Mobile Number linked with Aadhaar *</label>
+                        <input type="tel" id="aadhaar-phone" class="form-control" placeholder="Enter mobile number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="otp">OTP Verification *</label>
+                        <div style="display: flex; gap: 1rem;">
+                            <input type="text" id="otp" class="form-control" placeholder="Enter OTP" maxlength="6" pattern="[0-9]{6}" required>
+                            <button type="button" class="btn btn-secondary" onclick="sendOTP()">Send OTP</button>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email Address *</label>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
+                
+                <!-- Google Registration Form -->
+                <div id="google-form" class="form-section">
+                    <div class="form-group">
+                        <label for="google-email">Google Email *</label>
+                        <input type="email" id="google-email" class="form-control" placeholder="Enter your Google email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="google-name">Full Name *</label>
+                        <input type="text" id="google-name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="google-phone">Phone Number *</label>
+                        <input type="tel" id="google-phone" class="form-control" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-secondary" onclick="verifyGoogleAccount()" style="width: 100%;">
+                            <i class="fab fa-google"></i> Verify Google Account
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number *</label>
-                    <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                </div>
+                
+                <!-- Common Fields -->
                 <div class="form-group">
                     <label for="nationality">Nationality *</label>
                     <input type="text" id="nationality" class="form-control" placeholder="Enter your nationality" required>
@@ -579,56 +1340,64 @@
                     <label for="destination">Primary Destination *</label>
                     <input type="text" id="destination" class="form-control" placeholder="Enter primary destination" required>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Registration</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 1rem;">Complete Registration</button>
             </form>
         </div>
     </section>
-
+    
     <!-- Emergency Contacts Section -->
     <section id="contacts" class="emergency-contacts">
         <h2 class="section-title">Emergency Contacts</h2>
+        <p class="section-subtitle">24/7 emergency services available throughout India</p>
+        
         <div class="contacts-grid">
-            <div class="contact-card">
+            <div class="contact-card" onclick="callEmergency('police')">
                 <div class="contact-icon">
                     <i class="fas fa-phone-alt"></i>
                 </div>
                 <h3 class="contact-title">Police</h3>
                 <div class="contact-number">100</div>
-                <p style="color: #CBD5E1;">24/7 Emergency Police Services</p>
+                <p style="color: #cbd5e1;">24/7 Emergency Police Services</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card" onclick="callEmergency('ambulance')">
                 <div class="contact-icon">
                     <i class="fas fa-ambulance"></i>
                 </div>
                 <h3 class="contact-title">Ambulance</h3>
                 <div class="contact-number">108</div>
-                <p style="color: #CBD5E1;">Medical Emergency Services</p>
+                <p style="color: #cbd5e1;">Medical Emergency Services</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card" onclick="callEmergency('fire')">
                 <div class="contact-icon">
                     <i class="fas fa-fire-extinguisher"></i>
                 </div>
                 <h3 class="contact-title">Fire Department</h3>
                 <div class="contact-number">101</div>
-                <p style="color: #CBD5E1;">Fire and Rescue Services</p>
+                <p style="color: #cbd5e1;">Fire and Rescue Services</p>
             </div>
-            <div class="contact-card">
+            <div class="contact-card" onclick="callEmergency('tourist')">
                 <div class="contact-icon">
                     <i class="fas fa-info-circle"></i>
                 </div>
                 <h3 class="contact-title">Tourist Helpline</h3>
                 <div class="contact-number">1363</div>
-                <p style="color: #CBD5E1;">Tourist Information & Assistance</p>
+                <p style="color: #cbd5e1;">Tourist Information & Assistance</p>
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
                 <h3>Tourist Safety System</h3>
                 <p>Government of India initiative to ensure tourist safety across the country.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
             <div class="footer-section">
                 <h3>Quick Links</h3>
@@ -645,28 +1414,394 @@
                 <p>Tourist Helpline: 1363</p>
             </div>
             <div class="footer-section">
-                <h3>Contact Us</h3>
-                <p>Email: support@tourist-safety.gov.in</p>
-                <p>Phone: +91-11-23456789</p>
-                <p>Address: Ministry of Tourism, New Delhi</p>
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive safety updates and travel advisories</p>
+                <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Smart Tourist Safety System. All rights reserved.</p>
         </div>
     </footer>
-
+    
+    <!-- Digilocker Modal -->
+    <div id="digilocker-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Digilocker Authentication</h3>
+                <span class="close" onclick="closeDigilockerModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="digilocker-modal-body">
+                <div class="modal-spinner"></div>
+                <p>Connecting to Digilocker...</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeDigilockerModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Digital ID Modal -->
+    <div id="digital-id-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Your Digital ID</h3>
+                <span class="close" onclick="closeDigitalIDModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="digital-id-card" id="digital-id-card">
+                    <div class="digital-id-header">
+                        <div class="digital-id-logo">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Tourist Safety System</span>
+                        </div>
+                        <div class="digital-id-badge">VERIFIED</div>
+                    </div>
+                    <div class="digital-id-body">
+                        <div class="digital-id-photo" id="digital-id-photo">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="digital-id-info">
+                            <div class="digital-id-name" id="digital-id-name">Loading...</div>
+                            <div class="digital-id-details" id="digital-id-nationality">Nationality: Loading...</div>
+                            <div class="digital-id-details" id="digital-id-destination">Destination: Loading...</div>
+                            <div class="digital-id-number" id="digital-id-number">ID: TSS-XXXX-XXXX</div>
+                        </div>
+                    </div>
+                    <div class="digital-id-footer">
+                        <div class="digital-id-qr">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="digital-id-validity" id="digital-id-validity">
+                            Valid until: Loading...
+                        </div>
+                    </div>
+                </div>
+                <div class="digital-id-actions">
+                    <button type="button" class="btn btn-primary" onclick="downloadDigitalID()">
+                        <i class="fas fa-download"></i> Download
+                    </button>
+                    <button type="button" class="btn btn-secondary" onclick="shareDigitalID()">
+                        <i class="fas fa-share-alt"></i> Share
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Feature Detail Modal -->
+    <div id="feature-detail-modal" class="modal feature-detail-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="feature-detail-title">Feature Details</h3>
+                <span class="close" onclick="closeFeatureDetailModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="feature-detail-content" id="feature-detail-content">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Stat Detail Modal -->
+    <div id="stat-detail-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="stat-detail-title">Statistics Details</h3>
+                <span class="close" onclick="closeStatDetailModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="feature-detail-content" id="stat-detail-content">
+                    <!-- Content will be dynamically loaded -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
+        // Initialize map
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize map
+            var map = L.map('map').setView([20.5937, 78.9629], 5);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers for popular tourist destinations
+            var destinations = [
+                {name: "Taj Mahal", lat: 27.1751, lng: 78.0421, safety: "High", visitors: "7-8 million/year"},
+                {name: "Goa Beaches", lat: 15.2993, lng: 74.1240, safety: "High", visitors: "8 million/year"},
+                {name: "Kerala Backwaters", lat: 9.4982, lng: 76.3388, safety: "High", visitors: "1.5 million/year"},
+                {name: "Rajasthan Forts", lat: 26.9124, lng: 75.7873, safety: "Medium", visitors: "3.5 million/year"},
+                {name: "Himalayan Trekking", lat: 32.2210, lng: 77.1899, safety: "Medium", visitors: "0.8 million/year"}
+            ];
+            
+            destinations.forEach(function(dest) {
+                var color = dest.safety === "High" ? "green" : "orange";
+                var marker = L.circleMarker([dest.lat, dest.lng], {
+                    color: color,
+                    fillColor: color,
+                    fillOpacity: 0.7,
+                    radius: 10
+                }).addTo(map);
+                
+                marker.bindPopup(`<b>${dest.name}</b><br>Safety Level: ${dest.safety}<br>Annual Visitors: ${dest.visitors}`);
+            });
+            
+            // Check for Digilocker callback parameters in URL
+            checkDigilockerCallback();
+        });
+        
+        // Toggle between Aadhaar and Google registration methods
+        function toggleIdMethod(method) {
+            // Update active method indicator
+            document.querySelectorAll('.id-method').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.querySelector(`.id-method:nth-child(${method === 'aadhaar' ? 1 : 2})`).classList.add('active');
+            
+            // Show/hide corresponding form
+            document.querySelectorAll('.form-section').forEach(el => {
+                el.classList.remove('active');
+            });
+            document.getElementById(`${method}-form`).classList.add('active');
+        }
+        
+        // Digilocker Configuration
+        const DIGILOCKER_CONFIG = {
+            clientId: 'YOUR_CLIENT_ID', // Replace with your actual client ID
+            redirectUri: 'https://yourdomain.com/callback', // Replace with your actual redirect URI
+            authUrl: 'https://digilocker.gov.in/public/oauth2/1/authorize',
+            scope: 'BASIC SHARE',
+            state: generateRandomState()
+        };
+        
+        // Generate random state for CSRF protection
+        function generateRandomState() {
+            return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        }
+        
+        // Initiate Digilocker Authentication
+        function initiateDigilockerAuth() {
+            const aadhaarNumber = document.getElementById('aadhaar-number').value;
+            const statusDiv = document.getElementById('aadhaar-verification-status');
+            
+            if (!aadhaarNumber || aadhaarNumber.length !== 12) {
+                showVerificationStatus('Please enter a valid 12-digit Aadhaar number', 'error');
+                return;
+            }
+            
+            // Store Aadhaar number in session storage for later use
+            sessionStorage.setItem('aadhaarNumber', aadhaarNumber);
+            
+            // Show modal
+            const modal = document.getElementById('digilocker-modal');
+            const modalBody = document.getElementById('digilocker-modal-body');
+            modalBody.innerHTML = `
+                <div class="modal-spinner"></div>
+                <p>Redirecting to Digilocker for authentication...</p>
+            `;
+            modal.style.display = 'block';
+            
+            // Build Digilocker authorization URL
+            const authUrl = `${DIGILOCKER_CONFIG.authUrl}?` +
+                `response_type=code&` +
+                `client_id=${DIGILOCKER_CONFIG.clientId}&` +
+                `redirect_uri=${encodeURIComponent(DIGILOCKER_CONFIG.redirectUri)}&` +
+                `state=${DIGILOCKER_CONFIG.state}&` +
+                `scope=${DIGILOCKER_CONFIG.scope}`;
+            
+            // For production, redirect to Digilocker
+            // window.location.href = authUrl;
+            
+            // For demo purposes, simulate the redirect after a delay
+            setTimeout(() => {
+                modal.style.display = 'none';
+                simulateDigilockerCallback();
+            }, 2000);
+        }
+        
+        // Simulate Digilocker callback (for demo purposes)
+        function simulateDigilockerCallback() {
+            // Show modal
+            const modal = document.getElementById('digilocker-modal');
+            const modalBody = document.getElementById('digilocker-modal-body');
+            modalBody.innerHTML = `
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/DigiLocker_Logo.svg/1200px-DigiLocker_Logo.svg.png" alt="Digilocker" class="digilocker-logo">
+                <p>Authenticating with Digilocker...</p>
+            `;
+            modal.style.display = 'block';
+            
+            // Simulate authentication process
+            setTimeout(() => {
+                modalBody.innerHTML = `
+                    <div class="modal-spinner"></div>
+                    <p>Fetching your Aadhaar details...</p>
+                `;
+                
+                setTimeout(() => {
+                    // Simulate successful verification
+                    const aadhaarNumber = sessionStorage.getItem('aadhaarNumber');
+                    const mockData = {
+                        name: "Rahul Sharma",
+                        phone: "9876543210",
+                        verified: true
+                    };
+                    
+                    // Auto-fill form fields with verified data
+                    document.getElementById('aadhaar-name').value = mockData.name;
+                    document.getElementById('aadhaar-phone').value = mockData.phone;
+                    
+                    showVerificationStatus('Aadhaar verified successfully with Digilocker!', 'success');
+                    
+                    // Enable OTP field
+                    document.getElementById('otp').disabled = false;
+                    
+                    // Close modal
+                    modal.style.display = 'none';
+                }, 2000);
+            }, 1500);
+        }
+        
+        // Check for Digilocker callback parameters in URL
+        function checkDigilockerCallback() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            const state = urlParams.get('state');
+            const error = urlParams.get('error');
+            
+            if (error) {
+                showVerificationStatus(`Digilocker authentication failed: ${error}`, 'error');
+                return;
+            }
+            
+            if (code && state) {
+                // Verify state matches to prevent CSRF
+                if (state !== DIGILOCKER_CONFIG.state) {
+                    showVerificationStatus('Invalid state parameter. Possible CSRF attack.', 'error');
+                    return;
+                }
+                
+                // Exchange authorization code for access token
+                exchangeCodeForToken(code);
+            }
+        }
+        
+        // Exchange authorization code for access token
+        async function exchangeCodeForToken(code) {
+            try {
+                // In production, this would be done on your backend
+                const response = await fetch('/api/digilocker/token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        redirectUri: DIGILOCKER_CONFIG.redirectUri,
+                        clientId: DIGILOCKER_CONFIG.clientId
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    showVerificationStatus(`Token exchange failed: ${data.error}`, 'error');
+                    return;
+                }
+                
+                // Fetch Aadhaar details using access token
+                fetchAadhaarDetails(data.access_token);
+            } catch (error) {
+                showVerificationStatus('Network error during token exchange', 'error');
+                console.error('Token exchange error:', error);
+            }
+        }
+        
+        // Fetch Aadhaar details using access token
+        async function fetchAadhaarDetails(accessToken) {
+            try {
+                // In production, this would be done on your backend
+                const response = await fetch('/api/digilocker/aadhaar', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    showVerificationStatus(`Failed to fetch Aadhaar details: ${data.error}`, 'error');
+                    return;
+                }
+                
+                // Auto-fill form fields with verified data
+                document.getElementById('aadhaar-name').value = data.fullName;
+                document.getElementById('aadhaar-phone').value = data.phone;
+                
+                showVerificationStatus('Aadhaar verified successfully with Digilocker!', 'success');
+                
+                // Enable OTP field
+                document.getElementById('otp').disabled = false;
+            } catch (error) {
+                showVerificationStatus('Network error while fetching Aadhaar details', 'error');
+                console.error('Aadhaar details fetch error:', error);
+            }
+        }
+        
+        // Close Digilocker modal
+        function closeDigilockerModal() {
+            document.getElementById('digilocker-modal').style.display = 'none';
+        }
+        
+        // Show verification status
+        function showVerificationStatus(message, type) {
+            const statusDiv = document.getElementById('aadhaar-verification-status');
+            statusDiv.textContent = message;
+            statusDiv.className = `verification-status ${type}`;
+            statusDiv.style.display = 'block';
+        }
+        
+        // Send OTP for Aadhaar verification
+        function sendOTP() {
+            const phone = document.getElementById('aadhaar-phone').value;
+            if (phone && phone.length === 10) {
+                showVerificationStatus(`OTP sent to ${phone}. Please check your messages.`, 'info');
+                document.getElementById('otp').disabled = false;
+            } else {
+                showVerificationStatus('Please enter a valid 10-digit mobile number.', 'error');
+            }
+        }
+        
+        // Verify Google Account
+        function verifyGoogleAccount() {
+            const email = document.getElementById('google-email').value;
+            if (email) {
+                showVerificationStatus(`Google verification initiated for ${email}.`, 'info');
+                // In production, redirect to Google OAuth
+                // window.location.href = 'https://accounts.google.com/oauth/authorize?...';
+            } else {
+                showVerificationStatus('Please enter your Google email address.', 'error');
+            }
+        }
+        
         // Registration Form Handler
         document.getElementById('registrationForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = {
-                firstName: document.getElementById('firstName').value,
-                lastName: document.getElementById('lastName').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
+            // Get active method
+            const activeMethod = document.querySelector('.id-method.active').querySelector('.id-method-title').textContent;
+            
+            // Get form data based on active method
+            let formData = {
+                registrationMethod: activeMethod,
                 nationality: document.getElementById('nationality').value,
                 passport: document.getElementById('passport').value,
                 arrivalDate: document.getElementById('arrivalDate').value,
@@ -674,15 +1809,470 @@
                 destination: document.getElementById('destination').value
             };
             
+            if (activeMethod === 'Aadhaar Card') {
+                formData.aadhaarNumber = document.getElementById('aadhaar-number').value;
+                formData.aadhaarName = document.getElementById('aadhaar-name').value;
+                formData.phone = document.getElementById('aadhaar-phone').value;
+                formData.otp = document.getElementById('otp').value;
+            } else {
+                formData.googleEmail = document.getElementById('google-email').value;
+                formData.googleName = document.getElementById('google-name').value;
+                formData.phone = document.getElementById('google-phone').value;
+            }
+            
             // Simulate API call
             console.log('Registration Data:', formData);
             
-            // Show success message
-            alert('Registration successful! Your digital ID has been created.');
+            // Generate digital ID
+            generateDigitalID(formData);
             
             // Reset form
             this.reset();
         });
+        
+        // Generate Digital ID
+        function generateDigitalID(userData) {
+            // Generate a unique ID
+            const uniqueID = 'TSS-' + Math.random().toString(36).substr(2, 4).toUpperCase() + '-' + 
+                            Math.random().toString(36).substr(2, 4).toUpperCase();
+            
+            // Calculate validity date (1 year from now)
+            const validityDate = new Date();
+            validityDate.setFullYear(validityDate.getFullYear() + 1);
+            const formattedValidity = validityDate.toLocaleDateString('en-IN', { 
+                day: 'numeric', 
+                month: 'short', 
+                year: 'numeric' 
+            });
+            
+            // Get user name
+            const userName = userData.aadhaarName || userData.googleName || 'Tourist';
+            
+            // Update digital ID card
+            document.getElementById('digital-id-name').textContent = userName;
+            document.getElementById('digital-id-nationality').textContent = 'Nationality: ' + userData.nationality;
+            document.getElementById('digital-id-destination').textContent = 'Destination: ' + userData.destination;
+            document.getElementById('digital-id-number').textContent = 'ID: ' + uniqueID;
+            document.getElementById('digital-id-validity').textContent = 'Valid until: ' + formattedValidity;
+            
+            // Add user photo (simulated)
+            const photoElement = document.getElementById('digital-id-photo');
+            photoElement.innerHTML = `<img src="https://ui-avatars.com/api/?name=${encodeURIComponent(userName)}&background=1e40af&color=fff&size=100" alt="User Photo">`;
+            
+            // Show digital ID modal
+            document.getElementById('digital-id-modal').style.display = 'block';
+            
+            // Store user data for later use
+            localStorage.setItem('touristUserData', JSON.stringify({
+                ...userData,
+                uniqueID: uniqueID,
+                validityDate: formattedValidity
+            }));
+        }
+        
+        // Close Digital ID Modal
+        function closeDigitalIDModal() {
+            document.getElementById('digital-id-modal').style.display = 'none';
+        }
+        
+        // Download Digital ID
+        function downloadDigitalID() {
+            alert('Digital ID download feature would be implemented here. In a real application, this would generate a PDF or image file of your digital ID.');
+        }
+        
+        // Share Digital ID
+        function shareDigitalID() {
+            alert('Digital ID sharing feature would be implemented here. In a real application, this would allow you to share your ID with authorized parties.');
+        }
+        
+        // Show Feature Details
+        function showFeatureDetail(featureId) {
+            const modal = document.getElementById('feature-detail-modal');
+            const titleElement = document.getElementById('feature-detail-title');
+            const contentElement = document.getElementById('feature-detail-content');
+            
+            // Feature details data
+            const featureData = {
+                'digital-id': {
+                    title: 'Digital ID Creation',
+                    description: 'Our secure digital ID creation system leverages advanced biometric verification and authentication protocols to ensure your identity is protected throughout your journey.',
+                    features: [
+                        'Aadhaar integration with Digilocker for Indian citizens',
+                        'Google authentication for international tourists',
+                        'Biometric verification using facial recognition',
+                        'Secure QR code generation for easy verification',
+                        'Offline accessibility even without internet connection',
+                        'Real-time identity verification with authorities'
+                    ],
+                    stats: [
+                        { number: '99.9%', label: 'Verification Accuracy' },
+                        { number: '< 2 sec', label: 'Verification Time' },
+                        { number: '10+', label: 'Authentication Methods' }
+                    ]
+                },
+                'location-tracking': {
+                    title: 'Real-time Location Tracking',
+                    description: 'Advanced GPS-enabled tracking system with offline maps and location history to monitor your journey and ensure your safety at all times.',
+                    features: [
+                        'Real-time GPS tracking with 5-meter accuracy',
+                        'Offline map functionality for areas with poor connectivity',
+                        'Location history and journey timeline',
+                        'Battery optimization for extended tracking',
+                        'Geofencing with customizable safe zones',
+                        'Emergency location sharing with authorities'
+                    ],
+                    stats: [
+                        { number: '5m', label: 'Tracking Accuracy' },
+                        { number: '24h', label: 'Battery Life' },
+                        { number: '100%', label: 'Map Coverage' }
+                    ]
+                },
+                'sos': {
+                    title: 'SOS Emergency Button',
+                    description: 'One-touch emergency alert system that instantly notifies authorities and emergency contacts with your precise location and situation details.',
+                    features: [
+                        'One-touch SOS activation with haptic feedback',
+                        'Automatic location sharing with emergency services',
+                        'Customizable emergency contacts notification',
+                        'Pre-recorded emergency messages for quick communication',
+                        'Silent alarm for discreet emergencies',
+                        'Integration with local police and medical services'
+                    ],
+                    stats: [
+                        { number: '3 sec', label: 'Response Time' },
+                        { number: '100%', label: 'Location Accuracy' },
+                        { number: '24/7', label: 'Availability' }
+                    ]
+                },
+                'geo-fence': {
+                    title: 'Geo-fence Alert System',
+                    description: 'Set safe zones and receive instant alerts when entering or leaving designated areas with comprehensive risk assessment.',
+                    features: [
+                        'Customizable safe zones with radius settings',
+                        'Real-time entry/exit notifications',
+                        'Risk assessment based on location data',
+                        'Historical safety data for each area',
+                        'Automatic check-in at safe locations',
+                        'Integration with local safety authorities'
+                    ],
+                    stats: [
+                        { number: '100m', label: 'Detection Radius' },
+                        { number: '2 sec', label: 'Alert Time' },
+                        { number: '500+', label: 'Safe Zones' }
+                    ]
+                },
+                'health': {
+                    title: 'Health Monitoring',
+                    description: 'Track vital health metrics and receive alerts for medical emergencies with seamless integration to nearby healthcare facilities.',
+                    features: [
+                        'Vital signs monitoring through connected devices',
+                        'Medication reminders and tracking',
+                        'Allergy and medical condition profiles',
+                        'Nearby hospital and clinic locator',
+                        'Emergency medical contact sharing',
+                        'Health data encryption for privacy protection'
+                    ],
+                    stats: [
+                        { number: '24/7', label: 'Monitoring' },
+                        { number: '5 sec', label: 'Alert Time' },
+                        { number: '1000+', label: 'Healthcare Partners' }
+                    ]
+                },
+                'multilingual': {
+                    title: 'Multilingual Support',
+                    description: 'Access the system in 10+ Indian languages with real-time translation for seamless communication across diverse regions.',
+                    features: [
+                        'Support for 12 major Indian languages',
+                        'Real-time text and voice translation',
+                        'Regional dialect recognition',
+                        'Cultural context adaptation',
+                        'Emergency phrase translation',
+                        'Accessibility features for different languages'
+                    ],
+                    stats: [
+                        { number: '12+', label: 'Languages' },
+                        { number: '95%', label: 'Translation Accuracy' },
+                        { number: '22', label: 'Dialects Supported' }
+                    ]
+                },
+                'offline': {
+                    title: 'Offline Emergency Mode',
+                    description: 'Continue using essential features even without internet connectivity through our advanced offline mode technology.',
+                    features: [
+                        'Offline map downloads for entire regions',
+                        'Emergency contact storage without internet',
+                        'Cached medical and emergency information',
+                        'Offline SOS functionality',
+                        'Battery-saving mode for extended use',
+                        'Automatic sync when connectivity is restored'
+                    ],
+                    stats: [
+                        { number: '7 days', label: 'Offline Duration' },
+                        { number: '100%', label: 'Essential Features' },
+                        { number: '50%', label: 'Battery Savings' }
+                    ]
+                },
+                'sharing': {
+                    title: 'Family/Friend Sharing',
+                    description: 'Share your location and travel status with family and friends for added safety and peace of mind during your journey.',
+                    features: [
+                        'Real-time location sharing with trusted contacts',
+                        'Customizable sharing schedules and duration',
+                        'Journey progress and itinerary sharing',
+                        'Automatic check-in notifications',
+                        'Emergency alert broadcasting to contacts',
+                        'Privacy controls for selective sharing'
+                    ],
+                    stats: [
+                        { number: '10', label: 'Max Contacts' },
+                        { number: 'Real-time', label: 'Location Updates' },
+                        { number: 'End-to-end', label: 'Encryption' }
+                    ]
+                }
+            };
+            
+            // Get feature data
+            const feature = featureData[featureId];
+            if (!feature) return;
+            
+            // Update modal content
+            titleElement.textContent = feature.title;
+            
+            let contentHTML = `
+                <div class="feature-detail-header">
+                    <div class="feature-detail-icon">
+                        <i class="fas fa-${getFeatureIcon(featureId)}"></i>
+                    </div>
+                    <div class="feature-detail-title">${feature.title}</div>
+                </div>
+                <div class="feature-detail-description">${feature.description}</div>
+                <h4 style="color: white; margin-bottom: 1rem;">Key Features:</h4>
+                <ul class="feature-detail-list">
+            `;
+            
+            feature.features.forEach(featureItem => {
+                contentHTML += `<li><i class="fas fa-check-circle"></i> ${featureItem}</li>`;
+            });
+            
+            contentHTML += `
+                </ul>
+                <div class="feature-detail-stats">
+            `;
+            
+            feature.stats.forEach(stat => {
+                contentHTML += `
+                    <div class="feature-stat">
+                        <div class="feature-stat-number">${stat.number}</div>
+                        <div class="feature-stat-label">${stat.label}</div>
+                    </div>
+                `;
+            });
+            
+            contentHTML += `
+                </div>
+            `;
+            
+            contentElement.innerHTML = contentHTML;
+            modal.style.display = 'block';
+        }
+        
+        // Get feature icon based on feature ID
+        function getFeatureIcon(featureId) {
+            const iconMap = {
+                'digital-id': 'id-card',
+                'location-tracking': 'map-marker-alt',
+                'sos': 'exclamation-triangle',
+                'geo-fence': 'draw-polygon',
+                'health': 'heartbeat',
+                'multilingual': 'language',
+                'offline': 'wifi-slash',
+                'sharing': 'users'
+            };
+            return iconMap[featureId] || 'info-circle';
+        }
+        
+        // Close Feature Detail Modal
+        function closeFeatureDetailModal() {
+            document.getElementById('feature-detail-modal').style.display = 'none';
+        }
+        
+        // Show Stat Details
+        function showStatDetails(statId) {
+            const modal = document.getElementById('stat-detail-modal');
+            const titleElement = document.getElementById('stat-detail-title');
+            const contentElement = document.getElementById('stat-detail-content');
+            
+            // Stat details data
+            const statData = {
+                'tourists': {
+                    title: 'Tourists Protected',
+                    description: 'Our system has successfully protected over 2.5 million tourists across India since its inception.',
+                    details: [
+                        'Real-time monitoring of tourist movements',
+                        'Instant emergency response capabilities',
+                        'Proactive safety alerts and notifications',
+                        '24/7 support centers in major tourist destinations',
+                        'Partnership with local tourism authorities',
+                        'Continuous system improvements based on feedback'
+                    ],
+                    stats: [
+                        { number: '2.5M+', label: 'Total Tourists' },
+                        { number: '99.2%', label: 'Safety Rate' },
+                        { number: '28', label: 'States Covered' },
+                        { number: '150+', label: 'Tourist Destinations' }
+                    ]
+                },
+                'response': {
+                    title: 'Emergency Response Rate',
+                    description: 'Our emergency response system achieves a 98.7% response rate with an average response time of under 3 minutes.',
+                    details: [
+                        'Integrated emergency services network',
+                        'Advanced location tracking for precise targeting',
+                        'Automated alert systems for nearby authorities',
+                        'Trained emergency response teams',
+                        'Continuous monitoring and improvement',
+                        'Partnerships with local emergency services'
+                    ],
+                    stats: [
+                        { number: '98.7%', label: 'Response Rate' },
+                        { number: '< 3 min', label: 'Avg. Response Time' },
+                        { number: '24/7', label: 'Availability' },
+                        { number: '5000+', label: 'Response Teams' }
+                    ]
+                },
+                'monitoring': {
+                    title: 'Monitoring & Support',
+                    description: 'Our 24/7 monitoring and support system ensures continuous protection for all registered tourists.',
+                    details: [
+                        'AI-powered threat detection',
+                        'Real-time location monitoring',
+                        'Dedicated support centers',
+                        'Multilingual support staff',
+                        'Advanced surveillance systems',
+                        'Rapid response protocols'
+                    ],
+                    stats: [
+                        { number: '24/7', label: 'Monitoring' },
+                        { number: '100+', label: 'Support Centers' },
+                        { number: '500+', label: 'Support Staff' },
+                        { number: '15', label: 'Languages Supported' }
+                    ]
+                },
+                'states': {
+                    title: 'States Covered',
+                    description: 'Our system covers all 28 states and 8 union territories across India, ensuring nationwide protection.',
+                    details: [
+                        'Complete coverage of all tourist destinations',
+                        'Integration with state tourism departments',
+                        'Local emergency service partnerships',
+                        'Regional safety protocols',
+                        'Cultural sensitivity training for staff',
+                        'Continuous expansion of coverage areas'
+                    ],
+                    stats: [
+                        { number: '28', label: 'States' },
+                        { number: '8', label: 'Union Territories' },
+                        { number: '400+', label: 'Cities Covered' },
+                        { number: '1500+', label: 'Tourist Sites' }
+                    ]
+                }
+            };
+            
+            // Get stat data
+            const stat = statData[statId];
+            if (!stat) return;
+            
+            // Update modal content
+            titleElement.textContent = stat.title;
+            
+            let contentHTML = `
+                <div class="feature-detail-description">${stat.description}</div>
+                <h4 style="color: white; margin: 1.5rem 0 1rem;">Key Details:</h4>
+                <ul class="feature-detail-list">
+            `;
+            
+            stat.details.forEach(detail => {
+                contentHTML += `<li><i class="fas fa-check-circle"></i> ${detail}</li>`;
+            });
+            
+            contentHTML += `
+                </ul>
+                <h4 style="color: white; margin: 1.5rem 0 1rem;">Statistics:</h4>
+                <div class="feature-detail-stats">
+            `;
+            
+            stat.stats.forEach(statItem => {
+                contentHTML += `
+                    <div class="feature-stat">
+                        <div class="feature-stat-number">${statItem.number}</div>
+                        <div class="feature-stat-label">${statItem.label}</div>
+                    </div>
+                `;
+            });
+            
+            contentHTML += `
+                </div>
+            `;
+            
+            contentElement.innerHTML = contentHTML;
+            modal.style.display = 'block';
+        }
+        
+        // Close Stat Detail Modal
+        function closeStatDetailModal() {
+            document.getElementById('stat-detail-modal').style.display = 'none';
+        }
+        
+        // Call Emergency
+        function callEmergency(service) {
+            const services = {
+                'police': { number: '100', name: 'Police' },
+                'ambulance': { number: '108', name: 'Ambulance' },
+                'fire': { number: '101', name: 'Fire Department' },
+                'tourist': { number: '1363', name: 'Tourist Helpline' }
+            };
+            
+            const emergencyService = services[service];
+            if (emergencyService) {
+                if (confirm(`Are you sure you want to call ${emergencyService.name} at ${emergencyService.number}?`)) {
+                    // In a real application, this would initiate the call
+                    alert(`Calling ${emergencyService.name} at ${emergencyService.number}...`);
+                    // window.location.href = `tel:${emergencyService.number}`;
+                }
+            }
+        }
+        
+        // Newsletter subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('input[type="email"]').value;
+            alert(`Thank you for subscribing with email: ${email}. You will receive our latest safety updates and travel advisories.`);
+            event.target.reset();
+        }
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
     </script>
 </body>
 </html>
